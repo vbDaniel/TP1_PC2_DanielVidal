@@ -3,14 +3,12 @@ package pc2.lab.aula09.model;
 public class TriangleEquilateral extends Triangle{
 
 
-
     public TriangleEquilateral(int side){
         origem = new Point(0,0);
         inferiorEsquerdo = origem;
         inferiorDireito = new Point(side,0);
-        superior= new Point(side/2, );
+        superior= new Point(side/2, (side*Math.sqrt(3))/2);
     }
-
 
 
     @Override

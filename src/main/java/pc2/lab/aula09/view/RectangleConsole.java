@@ -11,6 +11,11 @@ public class RectangleConsole extends BasicConsole{
         int newHight = in.nextInt();
         Rectangle newRectangle = new Rectangle(newBase, newHight);
 
+        showMsg("Seu Retangulo terá as seguintes dimensoes:\n" +
+                "Base: " + newBase+ "\n" +
+                "Altura: " + newHight + "\n" +
+                "");
+
         return newRectangle;
     }
 }
