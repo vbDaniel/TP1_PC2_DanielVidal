@@ -22,15 +22,17 @@ public class TriangleRight extends Triangle{
         superior = new Point(base,hight);
     }
 
-
+    @Override
+    public double getHypo(){
+        return (Math.sqrt((base*base)+(hight*hight)));
+    }
     @Override
     public double getArea(){
         return (base * hight)/2;
     }
     @Override
     public double getPerimetro(){
-        double hypo =  (Math.sqrt((inferiorDireito.getX()*inferiorDireito.getX())+(superior.getY()*superior.getY())));
-        return base + hight + hypo;
+        return base + hight + getHypo();
     }
 
     @Override
@@ -41,6 +43,7 @@ public class TriangleRight extends Triangle{
                 "Altura => " + hight + "\n" +
                 "Area => " + decimal.format(getArea()) + "\n" +
                 "Perimetro => " + decimal.format(getPerimetro())  + "\n" +
-                "}\n";
+                "}\n" +
+                "---------------------------------------\n";
     }
 }

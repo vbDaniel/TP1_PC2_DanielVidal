@@ -55,6 +55,7 @@ public class Trapeze extends Quadrilater {
                 "Lateral Direita => " + decimal.format(getHipotRight()) + "\n" +
                 "Area => " + getArea() + "\n" +
                 "Perimetro => " + decimal.format(getPerimetro())  + "\n" +
-                "}\n";
+                "}\n" +
+                "---------------------------------------\n";
     }
 }

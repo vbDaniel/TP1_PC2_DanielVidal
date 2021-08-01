@@ -43,6 +43,7 @@ public class Lozenge extends Quadrilater {
                 "Diagonal Menor => " + smallDiagonal + "\n" +
                 "Area => " + getArea() + "\n" +
                 "Perimetro => " + decimal.format(getPerimetro())  + "\n" +
-                "}\n";
+                "}\n" +
+                "---------------------------------------\n";
     }
 }

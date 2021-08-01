@@ -58,7 +58,8 @@ public class Square extends Rectangle {
                 "Tamanho do Lado => " + sideSquade + "\n" +
                 "Area => " + getArea() + "\n" +
                 "Perimetro => " + getPerimetro() + "\n" +
-                '}';
+                "}\n" +
+                "---------------------------------------\n";
     }
 
 

@@ -1,7 +1,13 @@
 package pc2.lab.aula09.model;
 
 import java.text.DecimalFormat;
-
+/**
+ * A classe que instancia os objetos Circulos;
+ *
+ * @author Daniel Vidal
+ * @version CefetPaint 1.0
+ *
+ */
 public class Circle extends FiguraGeometrica{
 
     protected Point origem;
@@ -41,9 +47,10 @@ public class Circle extends FiguraGeometrica{
         return "Circulo{\n" +
                 "Ponto Central =>  x: " + pointCircle.getX() + " / y: " + pointCircle.getY() + "\n" +
                 "Raio => " + radius + "\n" +
-                "Diametro => " + radius * 2 + "\n" +
+                "Diametro => " + getDiameter() + "\n" +
                 "Area => " + decimal.format(getArea()) + "\n" +
                 "Circunferencia => " + decimal.format(getPerimetro())  + "\n" +
-                "}\n";
+                "}\n" +
+                "---------------------------------------\n";
     }
 }

@@ -14,14 +14,17 @@ public class TriangleEquilateral extends Triangle{
         superior= new Point((double) side/2, (side*Math.sqrt(3))/2);
     }
 
-
+    @Override
+    public double getHypo(){
+        return (side*Math.sqrt(3))/2;
+    }
     @Override
     public double getArea(){
         return (side * superior.getY())/2;
     }
     @Override
     public double getPerimetro(){
-        return inferiorDireito.getX() + superior.getY()*2;
+        return side*3;
     }
 
     @Override
@@ -29,8 +32,10 @@ public class TriangleEquilateral extends Triangle{
         DecimalFormat decimal = new DecimalFormat("#0.00");
         return "Triangulo Equilatero{\n" +
                 "Tamanho dos lados => " + side + "\n" +
+                "Altura => "  + decimal.format(getHypo()) + "\n" +
                 "Area => " + decimal.format(getArea()) + "\n" +
                 "Perimetro => " + decimal.format(getPerimetro())  + "\n" +
-                "}\n";
+                "}\n" +
+                "---------------------------------------\n";
     }
 }

@@ -1,6 +1,6 @@
 package pc2.lab.aula09.model;
 
-public class FiguraGeometrica extends Object{
+public class FiguraGeometrica{
     public double getArea(){
         return -1;
     }

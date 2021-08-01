@@ -1,4 +1,11 @@
 package pc2.lab.aula09.model;
+/**
+ * A classe abstrata que é a mãe dos outros Tringulos;
+ *
+ * @author Daniel Vidal
+ * @version CefetPaint 1.0
+ *
+ */
 
 public abstract class Triangle extends FiguraGeometrica{
 
@@ -13,6 +20,7 @@ public abstract class Triangle extends FiguraGeometrica{
     public Triangle() {
 
     }
+
 
     public Point getOrigem() {
         return origem;
@@ -48,6 +56,7 @@ public abstract class Triangle extends FiguraGeometrica{
     }
 */
 
+    public abstract double getHypo();
 
     public abstract double getArea();
 

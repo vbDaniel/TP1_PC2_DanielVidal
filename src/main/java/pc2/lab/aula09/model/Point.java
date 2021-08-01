@@ -42,7 +42,7 @@ public class Point extends FiguraGeometrica{
         this.color = color;
     }
 
-    public void desenha(){};
+    public void desenha(){}
 
     @Override
     public String toString() {

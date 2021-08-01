@@ -9,17 +9,20 @@ public class TriangleIsosceles extends Triangle{
         this.hight = hight;
         origem = startPoint;
         inferiorEsquerdo = origem;
-        inferiorDireito = new Point(base,0);
-        superior= new Point(base/2, hight);
+        inferiorDireito = new Point(base, origem.getY());
+        superior= new Point((double) base/2, hight);
     }
-
+    @Override
+    public double getHypo(){
+        return (Math.sqrt((base*base)+(hight*hight)));
+    }
     @Override
     public double getArea(){
         return (base * hight)/2;
     }
     @Override
     public double getPerimetro(){
-        return base + hight*2;
+        return base + getHypo()*2;
     }
     @Override
     public String toString() {
@@ -27,8 +30,10 @@ public class TriangleIsosceles extends Triangle{
         return "Triangulo Isoceles{\n" +
                 "Base => " + base + "\n" +
                 "Altura => " + hight + "\n" +
+                "Lados => " +  decimal.format(getHypo()) + "\n" +
                 "Area => " + decimal.format(getArea()) + "\n" +
                 "Perimetro => " + decimal.format(getPerimetro())  + "\n" +
-                "}\n";
+                "}\n" +
+                "---------------------------------------\n";
     }
 }

@@ -19,6 +19,7 @@ public class Rectangle extends Quadrilater {
         superiorEsquerdo = new Point(origem.getY(), hight);
     }
 
+/*
 
     public Point getInferiorEsquerdo() {
         return inferiorEsquerdo;
@@ -51,6 +52,7 @@ public class Rectangle extends Quadrilater {
     public void setSuperiorEsquerdo(Point superiorEsquerdo) {
         this.superiorEsquerdo = superiorEsquerdo;
     }
+*/
     @Override
     public double getArea(){
         return superiorDireito.getX() * superiorDireito.getY();
@@ -67,6 +69,7 @@ public class Rectangle extends Quadrilater {
                 "Base => " + base + "\n" +
                 "Area => " + getArea() + "\n" +
                 "Perimetro => " + getPerimetro() + "\n" +
-                '}';
+                "}\n" +
+                "---------------------------------------\n";
     }
 }

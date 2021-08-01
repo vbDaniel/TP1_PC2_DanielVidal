@@ -4,20 +4,28 @@ import pc2.lab.aula09.model.*;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
 import pc2.lab.aula09.view.*;
 
+/**
+ * A classe que é a base das interações do menu.
+ *
+ * @author Daniel Vidal
+ * @version CefetPaint 1.0
+ *
+ */
+
 public class CefetPaintByVidal {
 
 
 
     private FiguraGeometrica[] vectorFigure;
-    private BasicConsole tela;
-    private DesenhoBoard canvas;
-    private SquareConsole squareScreen;
-    private RectangleConsole rectangleScreen;
-    private LozengeConsole lozengeScreen;
-    private TrapezeConsole trapezeScreen;
-    private TriangleConsole triangleScreen;
-    private CircleConsole circleScreen;
-    private ListConsole listScreen;
+    private final BasicConsole tela;
+    private final DesenhoBoard canvas;
+    private final SquareConsole squareScreen;
+    private final RectangleConsole rectangleScreen;
+    private final LozengeConsole lozengeScreen;
+    private final TrapezeConsole trapezeScreen;
+    private final TriangleConsole triangleScreen;
+    private final CircleConsole circleScreen;
+    private final ListConsole listScreen;
 
 
     public CefetPaintByVidal() {
@@ -32,7 +40,12 @@ public class CefetPaintByVidal {
         circleScreen = new CircleConsole();
         listScreen = new ListConsole();
     }
-
+    /**
+     * O método que mostra o menu apartir do Enum;
+     *
+     * @author primario Alessio.Jr
+     *
+     */
     public void showMenu() {
         /*
         //testaArrayList();
@@ -51,58 +64,56 @@ public class CefetPaintByVidal {
          //Quadrado quadrado2 = new Quadrado(pont1, pont2, pont3,pont4);
         */
 
-        EnumMenuOption opcao = EnumMenuOption.LIST;
+        EnumMenuOption opcao;
         do {
             opcao = tela.askMainMenuOption();
 
-            tela.showMsg("Você escolheu: " + opcao);
-
+            tela.showMsg("---------------------------------------\n");
+            tela.showMsg("Você escolheu: " + opcao + "\n");
+            tela.showMsg("---------------------------------------\n");
             switch (opcao) {
 
                 case SQUARE:
                     Square squareNew = squareScreen.askSquare();
-                    insertFiguraGeométrica(squareNew);
+                    insertFiguraGeometrica(squareNew);
                     break;
                 case RECTANGLE:
                     Rectangle newRectangle = rectangleScreen.askRectangle();
-                    insertFiguraGeométrica(newRectangle);
+                    insertFiguraGeometrica(newRectangle);
                     break;
                 case LOZENGE:
                     Lozenge newLozenge = lozengeScreen.askLozenge();
-                    insertFiguraGeométrica(newLozenge);
+                    insertFiguraGeometrica(newLozenge);
                     break;
                 case TRAPEZE:
                     Trapeze newTrapeze = trapezeScreen.askTrapeze();
-                    insertFiguraGeométrica(newTrapeze);
+                    insertFiguraGeometrica(newTrapeze);
                     break;
 
                 case TRIANGLERIGHT:
                     Triangle newTriangleRight = triangleScreen.askTriangleRight();
-                    insertFiguraGeométrica(newTriangleRight);
+                    insertFiguraGeometrica(newTriangleRight);
                     break;
                 case TRIANGLEISOSCELES:
                     Triangle newTriangleIso = triangleScreen.askTriangleIsoceles();
-                    insertFiguraGeométrica(newTriangleIso);
+                    insertFiguraGeometrica(newTriangleIso);
                     break;
                 case TRIANGLEEQUILATERAL:
                     Triangle newTriangleEqui = triangleScreen.askTriangleEquilateral();
-                    insertFiguraGeométrica(newTriangleEqui);
+                    insertFiguraGeometrica(newTriangleEqui);
                     break;
                 case CIRCLE:
                     Circle newCircle = circleScreen.askCircle();
-                    insertFiguraGeométrica(newCircle);
+                    insertFiguraGeometrica(newCircle);
                     break;
 
                 case LIST:
-                    for (int i = 0; i < 10; i++) {
-                        if (vectorFigure[i] != null) {
-                            String figList = (vectorFigure[i].toString());
-                            listScreen.showList(figList);
-                        }
-                    }
+                    listFiguraGeometrica();
                     break;
                 case DELETE:
-
+                    listFiguraGeometrica();
+                    deleteFiguraGeometrica();
+                    listFiguraGeometrica();
                     break;
                 case DRAW:
                     canvas.desenhar(vectorFigure);
@@ -116,9 +127,10 @@ public class CefetPaintByVidal {
         } while (opcao != EnumMenuOption.END);
     }
 
-    public void insertFiguraGeométrica(FiguraGeometrica figura) {
+    public void insertFiguraGeometrica(FiguraGeometrica figura) {
 
         for (int i = 0; i < vectorFigure.length;  i++) {
+
 
             if((vectorFigure[i] != null) && ( i == vectorFigure.length-1)){
                 listScreen.showSpace();
@@ -131,18 +143,19 @@ public class CefetPaintByVidal {
             }
         }
     }
-    public void deleteFiguraGeométrica(FiguraGeometrica figura) {
+    public void deleteFiguraGeometrica() {
 
-        for (int i = 0; i < vectorFigure.length;  i++) {
+        listScreen.showMsg("Escolha apartir da ID da figura qual voce deseja apagar:");
+        int id = listScreen.askInt();
+        vectorFigure[id-1] = null;
 
-            if((vectorFigure[i] != null) && ( i == vectorFigure.length-1)){
-                listScreen.showSpace();
-
-            }
-            if(vectorFigure[i] == null){
-                vectorFigure[i] = figura;
-
-                break;
+    }
+    public void listFiguraGeometrica(){
+        for (int i = 0; i < 10; i++) {
+            if (vectorFigure[i] != null) {
+                listScreen.showMsg("ID: " + (i+1) + "\n");
+                String figList = (vectorFigure[i].toString());
+                listScreen.showList(figList);
             }
         }
     }
