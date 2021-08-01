@@ -10,13 +10,12 @@ public class CircleConsole extends BasicConsole{
         int newRadius = in.nextInt();
         showMsg("Digite um inteiro para a quantidade de Pontos que formaram um circulo: ");
         int newManyPoints = in.nextInt();
-        showMsg("Digite um inteiro para a primeira parte da BASE que define o angulo da parte Direita: ");
 
         showMsg("Seu Circulo terá as seguintes dimensoes:\n" +
                 "Coordenadas centrais: " + newcentralPoint + "\n" +
                 "Raio: " + newRadius + "\n" +
                 "Quantia de Pontos: " + newManyPoints + "\n" +
-                "");
+                "\n");
 
         Circle newCircle = new Circle(newcentralPoint,newRadius, newManyPoints);
         return newCircle;

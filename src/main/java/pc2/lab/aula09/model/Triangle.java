@@ -7,12 +7,11 @@ public abstract class Triangle extends FiguraGeometrica{
     protected Point inferiorDireito;
     protected Point inferiorEsquerdo;
     protected Point superior;
-
+    protected double base;
+    protected double hight;
+    protected  double side;
     public Triangle() {
-        origem = new Point(0,0);
-        inferiorEsquerdo = origem;
-        inferiorDireito = new Point(0,1);
-        superior = new Point(1,2);
+
     }
 
     public Point getOrigem() {
@@ -22,6 +21,7 @@ public abstract class Triangle extends FiguraGeometrica{
     public void setOrigem(Point origem) {
         this.origem = origem;
     }
+/*
 
     public Point getInferiorDireito() {
         return inferiorDireito;
@@ -46,6 +46,9 @@ public abstract class Triangle extends FiguraGeometrica{
     public void setSuperior(Point superior) {
         this.superior = superior;
     }
+*/
+
+
     public abstract double getArea();
 
     public abstract double getPerimetro();

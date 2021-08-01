@@ -2,36 +2,37 @@ package pc2.lab.aula09.model;
 
 public class Square extends Rectangle {
 
-    private int tamanhoLado;
+    private int sideSquade;
+    protected Point origem;
 
-    public Square(){
-        this(1);
+    public Square(Point startPoint, int sideSquade){
+        this.sideSquade = sideSquade;
+        this.origem = startPoint;
+        this.inferiorEsquerdo = startPoint;
+        this.inferiorDireito = new Point(origem.getX(), sideSquade);
+        this.superiorDireito = new Point(sideSquade,sideSquade);
+        this. superiorEsquerdo = new Point(sideSquade, origem.getY());
     }
 
-    public Square(int tamanhoLado){
-        this(new Point(0,0), tamanhoLado);
-    }
 
-    public Square(Point origem, int tamanhoLado) {
-        this.tamanhoLado = tamanhoLado;
+/*
+    public Square(Point origem, int sideSquade) {
+        this.sideSquade = sideSquade;
         this.origem = origem;
         this.setInferiorEsquerdo(origem);
 
-        this.getInferiorEsquerdo().setX(origem.getX()+tamanhoLado);
+        this.getInferiorEsquerdo().setX(origem.getX()+ sideSquade);
         this.getInferiorEsquerdo().setY(origem.getY());
 
-        this.setInferiorDireito(new Point(origem.getX()+tamanhoLado, origem.getY()));
+        this.setInferiorDireito(new Point(origem.getX()+ sideSquade, origem.getY()));
 
-        this.setSuperiorDireito(new Point(origem.getX()+tamanhoLado, origem.getY()+tamanhoLado));
-        this.setSuperiorEsquerdo(new Point(origem.getX(), origem.getY()+tamanhoLado));
+        this.setSuperiorDireito(new Point(origem.getX()+ sideSquade, origem.getY()+ sideSquade));
+        this.setSuperiorEsquerdo(new Point(origem.getX(), origem.getY()+ sideSquade));
     }
+*/
 
-    public void setTamanho(int tamanhoLado){
-        inferiorEsquerdo = new Point(0,0);
-        inferiorDireito = new Point(0,tamanhoLado);
-        superiorDireito = new Point(tamanhoLado,tamanhoLado);
-        superiorEsquerdo = new Point(tamanhoLado,0);
-    }
+
+
 
     public void setOrigem(int tamanhoLado){
         inferiorEsquerdo = new Point(0,0);
@@ -40,22 +41,29 @@ public class Square extends Rectangle {
         superiorEsquerdo = new Point(tamanhoLado,0);
     }
 
-    @Override
+
     public double getArea(){
-        return tamanhoLado*tamanhoLado;
+        return sideSquade * sideSquade;
     }
 
     public double getPerimetro(){
-        return tamanhoLado*4;
+        return sideSquade *4;
     }
+
+
 
     @Override
     public String toString() {
-        return "Quadrado{" +
-                "tamanhoLado=" + tamanhoLado +
+        return "Quadrado{\n" +
+                "Tamanho do Lado => " + sideSquade + "\n" +
+                "Area => " + getArea() + "\n" +
+                "Perimetro => " + getPerimetro() + "\n" +
                 '}';
     }
 
+
+/*
+    ARRAYLIST CONTEXT
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -65,9 +73,10 @@ public class Square extends Rectangle {
 
         return tamanhoLado == square.tamanhoLado;
     }
+*/
 
     @Override
     public int hashCode() {
-        return tamanhoLado;
+        return sideSquade;
     }
 }

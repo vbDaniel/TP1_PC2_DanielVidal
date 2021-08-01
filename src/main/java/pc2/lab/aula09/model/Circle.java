@@ -1,14 +1,16 @@
 package pc2.lab.aula09.model;
 
+import java.text.DecimalFormat;
+
 public class Circle extends FiguraGeometrica{
 
     protected Point origem;
-    protected Point radiusFirst;
     protected Point pointCircle;
+    protected double radius;
 
     public Circle(Point centralPoint, int radius,int manyPoint) {
-        origem = centralPoint;
-        radiusFirst = new Point(origem.getX(), radius);
+        this.origem = centralPoint;
+        this.radius = radius;
         double distance = ((2 * Math.PI) / manyPoint);
 
         for (int i = 0; i < manyPoint; i++) {
@@ -18,16 +20,30 @@ public class Circle extends FiguraGeometrica{
             int x = (int) ( cos * radius + origem.getX());
             int y = (int) ( sin * radius + origem.getY());
 
-            pointCircle = new Point( x, y);
+            this.pointCircle = new Point( x, y);
         }
     }
-
+    public double getDiameter(){
+        return radius * 2;
+    }
     @Override
     public double getArea(){
-        return (int) Math.PI*(radiusFirst.getY()* radiusFirst.getY());
+        return  Math.PI*(radius * radius);
     }
     @Override
     public double getPerimetro(){
-        return 2 * Math.PI * radiusFirst.getY();
+        return 2 * Math.PI * radius;
+    }
+
+    @Override
+    public String toString() {
+        DecimalFormat decimal = new DecimalFormat("#0.00");
+        return "Circulo{\n" +
+                "Ponto Central =>  x: " + pointCircle.getX() + " / y: " + pointCircle.getY() + "\n" +
+                "Raio => " + radius + "\n" +
+                "Diametro => " + radius * 2 + "\n" +
+                "Area => " + decimal.format(getArea()) + "\n" +
+                "Circunferencia => " + decimal.format(getPerimetro())  + "\n" +
+                "}\n";
     }
 }

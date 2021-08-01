@@ -2,15 +2,21 @@ package pc2.lab.aula09.model;
 
 public class Rectangle extends Quadrilater {
 
+    protected Point origem;
+    protected int base;
+    protected int hight;
     public Rectangle() {
-        this(1, 2);
+        this(new Point(),1, 2);
     }
 
-    public Rectangle(int base, int altura) {
-        inferiorEsquerdo = new Point(0,0);
-        inferiorDireito = new Point(base,0);
-        superiorDireito = new Point(base,altura);
-        superiorEsquerdo = new Point(0,altura);
+    public Rectangle(Point starPoint, int base, int hight) {
+        this.hight = hight;
+        this.base = base;
+        origem = starPoint;
+        inferiorEsquerdo = origem;
+        inferiorDireito = new Point(base,origem.getY());
+        superiorDireito = new Point(base,hight);
+        superiorEsquerdo = new Point(origem.getY(), hight);
     }
 
 
@@ -56,8 +62,11 @@ public class Rectangle extends Quadrilater {
 
     @Override
     public String toString() {
-        return "Retangulo{" +
-                "origem=" + origem +
+        return "Retangulo{\n" +
+                "Altura => " + hight + "\n" +
+                "Base => " + base + "\n" +
+                "Area => " + getArea() + "\n" +
+                "Perimetro => " + getPerimetro() + "\n" +
                 '}';
     }
 }

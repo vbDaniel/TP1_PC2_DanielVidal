@@ -15,6 +15,7 @@ public abstract class Quadrilater extends FiguraGeometrica{
         superiorDireito = new Point(1,2);
         superiorEsquerdo = new Point(1,0);
     }
+/*
 
     public Point getInferiorEsquerdo() {
         return inferiorEsquerdo;
@@ -47,6 +48,7 @@ public abstract class Quadrilater extends FiguraGeometrica{
     protected void setSuperiorEsquerdo(Point superiorEsquerdo) {
         this.superiorEsquerdo = superiorEsquerdo;
     }
+*/
 
     public abstract double getArea();
 

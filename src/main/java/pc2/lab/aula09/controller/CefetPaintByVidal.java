@@ -6,6 +6,8 @@ import pc2.lab.aula09.view.*;
 
 public class CefetPaintByVidal {
 
+
+
     private FiguraGeometrica[] vectorFigure;
     private BasicConsole tela;
     private DesenhoBoard canvas;
@@ -15,10 +17,11 @@ public class CefetPaintByVidal {
     private TrapezeConsole trapezeScreen;
     private TriangleConsole triangleScreen;
     private CircleConsole circleScreen;
+    private ListConsole listScreen;
 
 
     public CefetPaintByVidal() {
-        vectorFigure = new FiguraGeometrica[5];
+        vectorFigure = new FiguraGeometrica[10];
         tela = new BasicConsole();
         canvas = new DesenhoBoard();
         squareScreen = new SquareConsole();
@@ -27,6 +30,7 @@ public class CefetPaintByVidal {
         trapezeScreen = new TrapezeConsole();
         triangleScreen = new TriangleConsole();
         circleScreen = new CircleConsole();
+        listScreen = new ListConsole();
     }
 
     public void showMenu() {
@@ -48,54 +52,52 @@ public class CefetPaintByVidal {
         */
 
         EnumMenuOption opcao = EnumMenuOption.LIST;
-
         do {
             opcao = tela.askMainMenuOption();
 
-            tela.showMsg("Você escolheu: " + opcao + "\n Siga os passos a seguir para criar: \n\n");
+            tela.showMsg("Você escolheu: " + opcao);
 
             switch (opcao) {
 
                 case SQUARE:
                     Square squareNew = squareScreen.askSquare();
-                    insertFiguraGeométrica(squareNew, 0);
+                    insertFiguraGeométrica(squareNew);
                     break;
                 case RECTANGLE:
                     Rectangle newRectangle = rectangleScreen.askRectangle();
-                    insertFiguraGeométrica(newRectangle, 1);
+                    insertFiguraGeométrica(newRectangle);
                     break;
                 case LOZENGE:
                     Lozenge newLozenge = lozengeScreen.askLozenge();
-                    insertFiguraGeométrica(newLozenge, 1);
+                    insertFiguraGeométrica(newLozenge);
                     break;
                 case TRAPEZE:
                     Trapeze newTrapeze = trapezeScreen.askTrapeze();
-                    insertFiguraGeométrica(newTrapeze, 1);
+                    insertFiguraGeométrica(newTrapeze);
                     break;
 
                 case TRIANGLERIGHT:
                     Triangle newTriangleRight = triangleScreen.askTriangleRight();
-                    insertFiguraGeométrica(newTriangleRight, 1);
+                    insertFiguraGeométrica(newTriangleRight);
                     break;
                 case TRIANGLEISOSCELES:
                     Triangle newTriangleIso = triangleScreen.askTriangleIsoceles();
-                    insertFiguraGeométrica(newTriangleIso, 1);
+                    insertFiguraGeométrica(newTriangleIso);
                     break;
                 case TRIANGLEEQUILATERAL:
                     Triangle newTriangleEqui = triangleScreen.askTriangleEquilateral();
-                    insertFiguraGeométrica(newTriangleEqui, 1);
+                    insertFiguraGeométrica(newTriangleEqui);
                     break;
                 case CIRCLE:
                     Circle newCircle = circleScreen.askCircle();
-                    insertFiguraGeométrica(newCircle, 1);
+                    insertFiguraGeométrica(newCircle);
                     break;
 
                 case LIST:
-                    //Retangulo retangulo = new Retangulo();
-                    //inse/rtFiguraGeométrica(retangulo, 1);
-                    for (int i = 0; i < vectorFigure.length; i++) {
+                    for (int i = 0; i < 10; i++) {
                         if (vectorFigure[i] != null) {
-                            System.out.println(vectorFigure[i].toString());
+                            String figList = (vectorFigure[i].toString());
+                            listScreen.showList(figList);
                         }
                     }
                     break;
@@ -114,16 +116,36 @@ public class CefetPaintByVidal {
         } while (opcao != EnumMenuOption.END);
     }
 
-    public boolean insertFiguraGeométrica(FiguraGeometrica fig, int i) {
-        vectorFigure[i] = fig;
+    public void insertFiguraGeométrica(FiguraGeometrica figura) {
 
-        for (i = 0; i < vectorFigure.length; ) {
-            //Aqui tem um for
-            // procura posição vazia
-            // Se está cheio retorna False
-            return true;
+        for (int i = 0; i < vectorFigure.length;  i++) {
+
+            if((vectorFigure[i] != null) && ( i == vectorFigure.length-1)){
+                listScreen.showSpace();
+
+            }
+            if(vectorFigure[i] == null){
+                vectorFigure[i] = figura;
+
+                break;
+            }
         }
-        return false;
     }
+    public void deleteFiguraGeométrica(FiguraGeometrica figura) {
+
+        for (int i = 0; i < vectorFigure.length;  i++) {
+
+            if((vectorFigure[i] != null) && ( i == vectorFigure.length-1)){
+                listScreen.showSpace();
+
+            }
+            if(vectorFigure[i] == null){
+                vectorFigure[i] = figura;
+
+                break;
+            }
+        }
+    }
+
 }
 

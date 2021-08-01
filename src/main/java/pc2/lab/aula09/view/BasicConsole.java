@@ -1,7 +1,8 @@
 package pc2.lab.aula09.view;
 
+import pc2.lab.aula09.model.FiguraGeometrica;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.model.Square;
+
 
 import java.util.Scanner;
 
@@ -42,10 +43,10 @@ public class BasicConsole {
                 "2 - Make Rectangle\n" +
                 "3 - Make Lozenge\n" +
                 "4 - Make Trapeze\n" +
-                "5 - Make TriangleRectangle\n" +
-                "6 - Make TriangleIsosceles\n" +
-                "7 - Make TriangleEquilateral\n" +
-                "8 - Make Circle\n" +
+                "5 - Make Circle\n" +
+                "6 - Make TriangleRectangle\n" +
+                "7 - Make TriangleIsosceles\n" +
+                "8 - Make TriangleEquilateral\n" +
                 "A - To Delete\n" +
                 "D - To Draw\n" +
                 "L - To List\n" +
@@ -56,22 +57,20 @@ public class BasicConsole {
         switch (option){
 
             case "1":
-                return EnumMenuOption.QUADRILATER;
+                return EnumMenuOption.SQUARE;
             case "2":
                 return EnumMenuOption.RECTANGLE;
             case "3":
-                return EnumMenuOption.SQUARE;
-            case "4":
                 return EnumMenuOption.LOZENGE;
-            case "5":
+            case "4":
                 return EnumMenuOption.TRAPEZE;
-            case "6":
+            case "5":
                 return EnumMenuOption.CIRCLE;
-            case "7":
+            case "6":
                 return EnumMenuOption.TRIANGLERIGHT;
-            case "8":
+            case "7":
                 return EnumMenuOption.TRIANGLEISOSCELES;
-            case "9":
+            case "8":
                 return EnumMenuOption.TRIANGLEEQUILATERAL;
             case "A":
                 return EnumMenuOption.DELETE;
@@ -85,5 +84,6 @@ public class BasicConsole {
                 return EnumMenuOption.END;
         }
     }
+
 
 }

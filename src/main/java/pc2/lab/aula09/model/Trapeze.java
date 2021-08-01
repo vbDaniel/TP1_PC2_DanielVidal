@@ -1,11 +1,15 @@
 package pc2.lab.aula09.model;
 
+import java.text.DecimalFormat;
+
 public class Trapeze extends Quadrilater {
 
-    private Point superior;
-    private Point inferior;
-    private Point direita;
-    private Point esquerda;
+    protected Point origem;
+    protected double higth;
+    protected double bigBase;
+    protected double smallBase;
+    protected double hipotLeft;
+    protected double hipotRight;
 
 //    public Trapeze() {
 //        inferior = new Line(0,0,2,0);
@@ -14,24 +18,43 @@ public class Trapeze extends Quadrilater {
 //        esquerda = new Line(0,1,0,0);
 //    }
 
-    public Trapeze(int higth, int firstPartBase, int secundPartBase, int thirdPartBase){
-        double newX = firstPartBase + secundPartBase + thirdPartBase;
-        origem = new Point(0,0);
-        inferiorDireito = new Point( newX,higth);
-        superiorDireito = new Point(newX - thirdPartBase, higth);
+    public Trapeze(Point startPoint, int higth, int firstPartBase, int secundPartBase, int thirdPartBase){
+        this.higth = higth;
+        double bigBase = firstPartBase + secundPartBase + thirdPartBase;
+        this.bigBase = bigBase;
+        this.smallBase = secundPartBase;
+        origem = startPoint;
+        inferiorEsquerdo = origem;
+        inferiorDireito = new Point( bigBase,higth);
+        superiorDireito = new Point(bigBase - thirdPartBase, higth);
         superiorEsquerdo = new Point(firstPartBase, higth);
     }
-
-    // TEM QUE FAZER
+    public double getHipotLeft(){
+        return hipotLeft = (Math.sqrt((superiorEsquerdo.getX()*superiorEsquerdo.getX())+(superiorEsquerdo.getY()*superiorEsquerdo.getY())));
+    }
+    public double getHipotRight(){
+        return hipotRight = (Math.sqrt((superiorDireito.getX()*superiorDireito.getX())+(superiorEsquerdo.getY()*superiorEsquerdo.getY())));
+    }
 
     @Override
     public double getArea(){
-        return ((inferiorDireito.getX() * (superiorEsquerdo.getX()-superiorDireito.getX())* superiorDireito.getY())/2);
+        return ((inferiorDireito.getX() * -(superiorEsquerdo.getX()-superiorDireito.getX())* superiorDireito.getY())/2);
     }
     @Override
     public double getPerimetro(){
-        double hypoLeft =  (Math.sqrt((superiorEsquerdo.getX()*superiorEsquerdo.getX())+(superiorEsquerdo.getY()*superiorEsquerdo.getY())));
-        double hypoRight =  (Math.sqrt((superiorDireito.getX()*superiorDireito.getX())+(superiorEsquerdo.getY()*superiorEsquerdo.getY())));
-        return hypoLeft + hypoRight + inferiorDireito.getX() + (superiorEsquerdo.getX() - superiorDireito.getX());
+        return (getHipotLeft() + getHipotRight() + inferiorDireito.getX()) + superiorDireito.getX() - superiorEsquerdo.getX();
+    }
+    @Override
+    public String toString() {
+        DecimalFormat decimal = new DecimalFormat("#0.00");
+        return "Trapezio{\n" +
+                "Base Maior => " + bigBase + "\n" +
+                "Base Menor => " + smallBase + "\n" +
+                "Altura => " + higth + "\n" +
+                "Lateral Esquerda => " + decimal.format(getHipotLeft()) + "\n" +
+                "Lateral Direita => " + decimal.format(getHipotRight()) + "\n" +
+                "Area => " + getArea() + "\n" +
+                "Perimetro => " + decimal.format(getPerimetro())  + "\n" +
+                "}\n";
     }
 }
