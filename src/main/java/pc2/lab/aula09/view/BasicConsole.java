@@ -47,6 +47,34 @@ public class BasicConsole {
         //Loop até entregar uma opção válida
         showMsg("Enter a number or letter that matches your wish: \n" +
                
+                "1 - Make Figura Geometrica\n" +
+                "2 - To Delete\n" +
+                "D - To Draw\n" +
+                "L - To List\n" +
+                "X - To END Paint");
+
+        String option = in.next();
+
+        switch (option){
+            case "1":
+                return EnumMenuOption.MAKEFIGURA;
+            case "2":
+                return EnumMenuOption.DELETE;
+            case "D":
+                return EnumMenuOption.DRAW;
+            case "L":
+                return EnumMenuOption.LIST;
+            case "X":
+                return EnumMenuOption.END;
+            default:
+                return EnumMenuOption.END;
+        }
+    }
+
+    public EnumMenuOption askMenuMakeFig(){
+
+        showMsg("Enter a number or letter that matches your wish: \n" +
+
                 "1 - Make Square\n" +
                 "2 - Make Rectangle\n" +
                 "3 - Make Lozenge\n" +
@@ -55,15 +83,11 @@ public class BasicConsole {
                 "6 - Make TriangleRectangle\n" +
                 "7 - Make TriangleIsosceles\n" +
                 "8 - Make TriangleEquilateral\n" +
-                "A - To Delete\n" +
-                "D - To Draw\n" +
-                "L - To List\n" +
-                "X - To END Paint");
+                "X - To Back main menu");
 
         String option = in.next();
 
         switch (option){
-
             case "1":
                 return EnumMenuOption.SQUARE;
             case "2":
@@ -80,18 +104,11 @@ public class BasicConsole {
                 return EnumMenuOption.TRIANGLEISOSCELES;
             case "8":
                 return EnumMenuOption.TRIANGLEEQUILATERAL;
-            case "A":
-                return EnumMenuOption.DELETE;
-            case "D":
-                return EnumMenuOption.DRAW;
-            case "L":
-                return EnumMenuOption.LIST;
             case "X":
-                return EnumMenuOption.END;
+                return askMainMenuOption();
             default:
                 return EnumMenuOption.END;
         }
     }
-
 
 }

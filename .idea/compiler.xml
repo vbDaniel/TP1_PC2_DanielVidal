@@ -9,6 +9,7 @@
         <module name="PC2" />
         <module name="pc2-2021-1" />
         <module name="pc2-2021-1-master" />
+        <module name="CefetPaint" />
       </profile>
     </annotationProcessing>
   </component>

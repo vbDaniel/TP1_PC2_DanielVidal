@@ -64,7 +64,7 @@ public class CefetPaintByVidal {
          //Quadrado quadrado2 = new Quadrado(pont1, pont2, pont3,pont4);
         */
 
-        EnumMenuOption opcao;
+        EnumMenuOption opcao, opcao2;
         do {
             opcao = tela.askMainMenuOption();
 
@@ -72,39 +72,44 @@ public class CefetPaintByVidal {
             tela.showMsg("Você escolheu: " + opcao + "\n");
             tela.showMsg("---------------------------------------\n");
             switch (opcao) {
+                case MAKEFIGURA:
+                    opcao2 = tela.askMenuMakeFig();
 
-                case SQUARE:
-                    Square squareNew = squareScreen.askSquare();
-                    insertFiguraGeometrica(squareNew);
-                    break;
-                case RECTANGLE:
-                    Rectangle newRectangle = rectangleScreen.askRectangle();
-                    insertFiguraGeometrica(newRectangle);
-                    break;
-                case LOZENGE:
-                    Lozenge newLozenge = lozengeScreen.askLozenge();
-                    insertFiguraGeometrica(newLozenge);
-                    break;
-                case TRAPEZE:
-                    Trapeze newTrapeze = trapezeScreen.askTrapeze();
-                    insertFiguraGeometrica(newTrapeze);
-                    break;
+                    switch (opcao2){
+                        case SQUARE:
+                            Square squareNew = squareScreen.askSquare();
+                            insertFiguraGeometrica(squareNew);
+                            break;
+                        case RECTANGLE:
+                            Rectangle newRectangle = rectangleScreen.askRectangle();
+                            insertFiguraGeometrica(newRectangle);
+                            break;
+                        case LOZENGE:
+                            Lozenge newLozenge = lozengeScreen.askLozenge();
+                            insertFiguraGeometrica(newLozenge);
+                            break;
+                        case TRAPEZE:
+                            Trapeze newTrapeze = trapezeScreen.askTrapeze();
+                            insertFiguraGeometrica(newTrapeze);
+                            break;
 
-                case TRIANGLERIGHT:
-                    Triangle newTriangleRight = triangleScreen.askTriangleRight();
-                    insertFiguraGeometrica(newTriangleRight);
-                    break;
-                case TRIANGLEISOSCELES:
-                    Triangle newTriangleIso = triangleScreen.askTriangleIsoceles();
-                    insertFiguraGeometrica(newTriangleIso);
-                    break;
-                case TRIANGLEEQUILATERAL:
-                    Triangle newTriangleEqui = triangleScreen.askTriangleEquilateral();
-                    insertFiguraGeometrica(newTriangleEqui);
-                    break;
-                case CIRCLE:
-                    Circle newCircle = circleScreen.askCircle();
-                    insertFiguraGeometrica(newCircle);
+                        case TRIANGLERIGHT:
+                            Triangle newTriangleRight = triangleScreen.askTriangleRight();
+                            insertFiguraGeometrica(newTriangleRight);
+                            break;
+                        case TRIANGLEISOSCELES:
+                            Triangle newTriangleIso = triangleScreen.askTriangleIsoceles();
+                            insertFiguraGeometrica(newTriangleIso);
+                            break;
+                        case TRIANGLEEQUILATERAL:
+                            Triangle newTriangleEqui = triangleScreen.askTriangleEquilateral();
+                            insertFiguraGeometrica(newTriangleEqui);
+                            break;
+                        case CIRCLE:
+                            Circle newCircle = circleScreen.askCircle();
+                            insertFiguraGeometrica(newCircle);
+                            break;
+                    }
                     break;
 
                 case LIST:
@@ -159,6 +164,5 @@ public class CefetPaintByVidal {
             }
         }
     }
-
 }
 
