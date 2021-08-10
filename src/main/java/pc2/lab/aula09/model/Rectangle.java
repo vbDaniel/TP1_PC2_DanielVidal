@@ -72,4 +72,8 @@ public class Rectangle extends Quadrilater {
                 "}\n" +
                 "---------------------------------------\n";
     }
+    @Override
+    public int hashCode() {
+        return 2;
+    }
 }

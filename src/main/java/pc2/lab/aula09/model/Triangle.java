@@ -61,4 +61,9 @@ public abstract class Triangle extends FiguraGeometrica{
     public abstract double getArea();
 
     public abstract double getPerimetro();
+
+    @Override
+    public int hashCode() {
+        return 6;
+    }
 }

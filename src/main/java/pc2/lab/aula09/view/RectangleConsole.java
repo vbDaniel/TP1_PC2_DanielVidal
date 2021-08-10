@@ -35,7 +35,7 @@ public class RectangleConsole extends BasicConsole{
         return newRectangle;
     }
 
-    public EnumMenuOption askMenuRectangle(){
+    public EnumMenuOption askMenuRectangle(MenuConsole menuConsole){
 
         showMsg("MENU *Rectangle*: \n" +
                 "Digite uma opção: \n" +
@@ -60,7 +60,7 @@ public class RectangleConsole extends BasicConsole{
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return askMainMenuOption();
+                return menuConsole.askMenuMakeFig();
             default:
                 return EnumMenuOption.END;
         }

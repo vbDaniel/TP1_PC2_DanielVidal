@@ -22,7 +22,7 @@ public class PointConsole extends BasicConsole{
     }
 
 
-    public EnumMenuOption askMenuPoint(){
+    public EnumMenuOption askMenuPoint(MenuConsole menuConsole){
 
         showMsg("MENU *Ponto*: \n" +
                 "Digite uma opção: \n" +
@@ -47,7 +47,7 @@ public class PointConsole extends BasicConsole{
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return askMainMenuOption();
+                return menuConsole.askMainMenuOption();
             default:
                 return EnumMenuOption.END;
         }

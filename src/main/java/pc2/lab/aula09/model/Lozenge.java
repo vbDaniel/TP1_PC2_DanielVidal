@@ -46,4 +46,8 @@ public class Lozenge extends Quadrilater {
                 "}\n" +
                 "---------------------------------------\n";
     }
+    @Override
+    public int hashCode() {
+        return 3;
+    }
 }

@@ -16,8 +16,8 @@ public class CefetPaintByVidal {
 
 
 
-    private FiguraGeometrica[] vectorFigure;
-    private final BasicConsole tela;
+    private Render[] vectorRenders;
+    private final BasicConsole basicScreen;
     private final DesenhoBoard canvas;
     private final SquareConsole squareScreen;
     private final RectangleConsole rectangleScreen;
@@ -26,11 +26,14 @@ public class CefetPaintByVidal {
     private final TriangleConsole triangleScreen;
     private final CircleConsole circleScreen;
     private final ListConsole listScreen;
+    private final MenuConsole menuScreen;
+    private final RightConsole rightScreen;
+    private final TextConsole textConsole;
 
 
     public CefetPaintByVidal() {
-        vectorFigure = new FiguraGeometrica[10];
-        tela = new BasicConsole();
+        vectorRenders = new Render[10];
+        basicScreen = new BasicConsole();
         canvas = new DesenhoBoard();
         squareScreen = new SquareConsole();
         rectangleScreen = new RectangleConsole();
@@ -39,6 +42,9 @@ public class CefetPaintByVidal {
         triangleScreen = new TriangleConsole();
         circleScreen = new CircleConsole();
         listScreen = new ListConsole();
+        menuScreen = new MenuConsole();
+        rightScreen = new RightConsole();
+        textConsole = new TextConsole();
     }
     /**
      * O método que mostra o menu apartir do Enum;
@@ -47,103 +53,263 @@ public class CefetPaintByVidal {
      *
      */
     public void showMenu() {
-        /*
-        //testaArrayList();
-        Point pont1 = new Point(0, 0);
-        Point pont2 = new Point(5, 6);
-        Point pont3 = new Point(2, 8);
-        Point pont4 = new Point(4, 4);
 
-
-         Square squareNovo = new Square();
-         Square square1 = new Square(1);
-         Square square2 = new Square(pont1, 5);
-
-         Rectangle rect1 = new Rectangle(1, 2);
-         Rectangle rect3 = new Rectangle(4, 2);
-         //Quadrado quadrado2 = new Quadrado(pont1, pont2, pont3,pont4);
-        */
-
-        EnumMenuOption opcao, opcao2;
+        EnumMenuOption opcao;
         do {
-            opcao = tela.askMainMenuOption();
+            opcao = menuScreen.askMainMenuOption();
 
-            tela.showMsg("---------------------------------------\n");
-            tela.showMsg("Você escolheu: " + opcao + "\n");
-            tela.showMsg("---------------------------------------\n");
+            basicScreen.showMsg("---------------------------------------\n");
+            basicScreen.showMsg("Você escolheu: " + opcao + "\n");
+            basicScreen.showMsg("---------------------------------------\n");
             switch (opcao) {
-                case MAKEFIGURA:
-                    opcao = tela.askMenuMakeFig();
+                case MAKERENDER:
+
+                    do {
+                        opcao = menuScreen.askMenuMakeFig();
                         switch (opcao) {
+                            //1----------------------------------------------------------------------
                             case SQUARE:
 
-                                Square squareNew = squareScreen.askSquare();
-                                insertFiguraGeometrica(squareNew);
-                                opcao = EnumMenuOption.MAKEFIGURA;
-                                break;
-                            case RECTANGLE:
-                                Rectangle newRectangle = rectangleScreen.askRectangle();
-                                insertFiguraGeometrica(newRectangle);
-                                break;
-                            case LOZENGE:
-                                Lozenge newLozenge = lozengeScreen.askLozenge();
-                                insertFiguraGeometrica(newLozenge);
-                                break;
-                            case TRAPEZE:
-                                Trapeze newTrapeze = trapezeScreen.askTrapeze();
-                                insertFiguraGeometrica(newTrapeze);
-                                break;
-
-                            case TRIANGLERIGHT:
-                                Triangle newTriangleRight = triangleScreen.askTriangleRight();
-                                insertFiguraGeometrica(newTriangleRight);
-                                break;
-                            case TRIANGLEISOSCELES:
-                                Triangle newTriangleIso = triangleScreen.askTriangleIsoceles();
-                                insertFiguraGeometrica(newTriangleIso);
-                                break;
-                            case TRIANGLEEQUILATERAL:
-                                Triangle newTriangleEqui = triangleScreen.askTriangleEquilateral();
-                                insertFiguraGeometrica(newTriangleEqui);
-                                break;
-                            case CIRCLE:
-                                opcao = circleScreen.askMenuCircle();
+                                opcao = squareScreen.askMenuSquare(menuScreen);
                                 switch (opcao) {
-                                    case NEWCIRCLE:
-                                        Circle newCircle = circleScreen.askCircle();
-                                        insertFiguraGeometrica(newCircle);
+                                    case NEWSQUARE:
+                                        Square squareNew = squareScreen.askSquare();
+                                        insertRender(squareNew);
                                         break;
                                     case EDIT:
-                                        editFiguraGeometrica();
+                                        editRendersGeometrics();
                                         break;
                                     case LIST:
-                                        for (int i = 0; i < vectorFigure.length; i++) {
-                                            Circle verif = (Circle) vectorFigure[i];
-                                            if (verif.hashCode() == 5) {
-                                                listFiguraGeometrica();
-                                            }
-                                        }
+                                        listOnlyFigura(1);
                                         break;
                                     case SHOW:
+                                        showOnlyOneFigure(1);
                                         break;
                                     case DELETE:
+                                        deleteRenderHash(1);
+                                        break;
+                                    default:
+                                        break;
+
+                                }
+
+                                break;
+                            //2----------------------------------------------------------------------
+                            case RECTANGLE:
+
+                                opcao = rectangleScreen.askMenuRectangle(menuScreen);
+                                switch (opcao) {
+                                    case NEWRECTANGLE:
+                                        Rectangle newRectangle = rectangleScreen.askRectangle();
+                                        insertRender(newRectangle);
+                                        break;
+                                    case EDIT:
+                                        editRendersGeometrics();
+                                        break;
+                                    case LIST:
+                                        listOnlyFigura(2);
+                                        break;
+                                    case SHOW:
+                                        showOnlyOneFigure(2);
+                                        break;
+                                    case DELETE:
+                                        deleteRenderHash(2);
+                                        break;
+                                    default:
+                                        break;
+
+                                }
+
+                                break;
+                            //3----------------------------------------------------------------------
+                            case LOZENGE:
+
+                                opcao = lozengeScreen.askMenuLozenge(menuScreen);
+                                switch (opcao) {
+                                    case NEWLOZENGE:
+                                        Lozenge newLozenge = lozengeScreen.askLozenge();
+                                        insertRender(newLozenge);
+                                        break;
+                                    case EDIT:
+                                        editRendersGeometrics();
+                                        break;
+                                    case LIST:
+                                        listOnlyFigura(3);
+                                        break;
+                                    case SHOW:
+                                        showOnlyOneFigure(3);
+                                        break;
+                                    case DELETE:
+                                        deleteRenderHash(3);
+                                        break;
+                                    default:
+
+                                        break;
+
+                                }
+
+                                break;
+                            //4----------------------------------------------------------------------
+                            case TRAPEZE:
+
+                                opcao = trapezeScreen.askMenuTrapeze(menuScreen);
+                                switch (opcao) {
+                                    case NEWTRAPEZE:
+                                        Trapeze newTrapeze = trapezeScreen.askTrapeze();
+                                        insertRender(newTrapeze);
+                                        break;
+                                    case EDIT:
+                                        editRendersGeometrics();
+                                        break;
+                                    case LIST:
+                                        listOnlyFigura(4);
+                                        break;
+                                    case SHOW:
+                                        showOnlyOneFigure(4);
+                                        break;
+                                    case DELETE:
+                                        deleteRenderHash(4);
+                                        break;
+                                    default:
                                         break;
 
                                 }
                                 break;
+                            //5----------------------------------------------------------------------
+
+                            case CIRCLE:
+
+                                opcao = circleScreen.askMenuCircle(menuScreen);
+                                switch (opcao) {
+                                    case NEWCIRCLE:
+                                        Circle newCircle = circleScreen.askCircle();
+                                        insertRender(newCircle);
+                                        break;
+                                    case EDIT:
+                                        editRendersGeometrics();
+                                        break;
+                                    case LIST:
+                                        listOnlyFigura(5);
+                                        break;
+                                    case SHOW:
+                                        showOnlyOneFigure(5);
+                                        break;
+                                    case DELETE:
+                                        deleteRenderHash(5);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                break;
+                            //6----------------------------------------------------------------------
+                            case TRIANGLE:
+
+                                opcao = triangleScreen.askMenuTriangulo(menuScreen);
+                                switch (opcao) {
+                                    case NEWTRIANGLE:
+                                        opcao = triangleScreen.askTriangulo(menuScreen);
+                                        switch (opcao) {
+                                            case TRIANGLEEQUILATERAL:
+                                                Circle newCircle = circleScreen.askCircle();
+                                                insertRender(newCircle);
+                                                break;
+                                            case TRIANGLEISOSCELES:
+                                                Triangle newTriangleIso = triangleScreen.askTriangleIsoceles();
+                                                insertRender(newTriangleIso);
+                                                break;
+                                            case TRIANGLERIGHT:
+                                                Triangle newTriangleRight = triangleScreen.askTriangleRight();
+                                                insertRender(newTriangleRight);
+                                                break;
+                                            default:break;
+                                        }
+                                        break;
+
+                                    case EDIT:
+                                        editRendersGeometrics();
+                                        break;
+
+                                    case LIST:
+                                        listOnlyFigura(6);
+                                        break;
+                                    case SHOW:
+                                        showOnlyOneFigure(6);
+                                        break;
+                                    case DELETE:
+                                        deleteRenderHash(6);
+                                        break;
+                                    default:
+                                        break;
+
+                                }
+                                break;
+
+                            //7----------------------------------------------------------------------
+                            case RIGHT:
+
+                                opcao = rightScreen.askMenuRight(menuScreen);
+                                switch (opcao) {
+                                    case NEWRIGHT:
+                                        Right newRight = rightScreen.askRight();
+                                        insertRender(newRight);
+                                        break;
+                                    case EDIT:
+                                        editRendersGeometrics();
+                                        break;
+                                    case LIST:
+                                        listOnlyFigura(7);
+                                        break;
+                                    case SHOW:
+                                        showOnlyOneFigure(7);
+                                        break;
+                                    case DELETE:
+                                        deleteRenderHash(7);
+                                        break;
+                                    default:
+                                        break;
+
+                                }
+                                break;
+                            //8----------------------------------------------------------------------
+                            case TEXT:
+                                opcao = textConsole.askMenuText(menuScreen);
+                                switch (opcao) {
+                                    case NEWTEXT:
+
+                                        break;
+                                    case EDIT:
+                                        editRendersGeometrics();
+                                        break;
+                                    case LIST:
+                                        listOnlyFigura(8);
+                                        break;
+                                    case SHOW:
+                                        showOnlyOneFigure(8);
+                                        break;
+                                    case DELETE:
+                                        deleteRenderHash(8);
+                                        break;
+                                    default:
+
+                                        break;
+
+                                }
+                                break;
+                            //X----------------------------------------------------------------------
+                            case BACK:
+                                break;
                         }
+                    }while (opcao != EnumMenuOption.BACK);
 
-
-                break;
+                    break;
 
                 case LIST:
-                    listFiguraGeometrica();
+                    listRenders();
                     break;
                 case DELETE:
-                    deleteFiguraGeometrica();
+                    deleteRendersGeometrics();
                     break;
                 case DRAW:
-                    canvas.desenhar(vectorFigure);
                     break;
                 case END:
                     break;
@@ -154,48 +320,77 @@ public class CefetPaintByVidal {
         } while (opcao != EnumMenuOption.END);
     }
 
-    public void insertFiguraGeometrica(FiguraGeometrica figura) {
+    public void insertRender(Render render) {
 
-        for (int i = 0; i < vectorFigure.length;  i++) {
+        for (int i = 0; i < vectorRenders.length; i++) {
 
 
-            if((vectorFigure[i] != null) && ( i == vectorFigure.length-1)){
+            if((vectorRenders[i] != null) && ( i == vectorRenders.length-1)){
                 listScreen.showSpace();
 
             }
-            if(vectorFigure[i] == null){
-                vectorFigure[i] = figura;
+            if(vectorRenders[i] == null){
+                vectorRenders[i] = render;
 
                 break;
             }
         }
     }
-    public void deleteFiguraGeometrica() {
-        listFiguraGeometrica();
-        listScreen.showMsg("Escolha apartir da ID da figura qual voce deseja apagar:");
+    public void deleteRendersGeometrics() {
+        listRenders();
+        listScreen.showMsg("Escolha apartir da ID da qual voce deseja apagar:");
         int id = listScreen.askInt();
-        vectorFigure[id-1] = null;
-        listFiguraGeometrica();
+        vectorRenders[id-1] = null;
+        listRenders();
     }
-    public void editFiguraGeometrica() {
-        listFiguraGeometrica();
-        listScreen.showMsg("Escolha apartir da ID da figura qual voce deseja EDITAR:");
+
+    public void editRendersGeometrics() {
+
+        listRenders();
+
+        listScreen.showMsg("Escolha apartir da ID da qual voce deseja EDITAR:");
         int id = listScreen.askInt();
-        vectorFigure[id-1] = circleScreen.askCircle();
+        vectorRenders[id-1] = circleScreen.askCircle();
 
-        listFiguraGeometrica();
+        listRenders();
 
     }
-    public void listFiguraGeometrica(){
+    public void listRenders(){
         for (int i = 0; i < 10; i++) {
-            if (vectorFigure[i] != null) {
+            if (vectorRenders[i] != null) {
                 listScreen.showMsg("ID: " + (i+1) + "\n");
-                String figList = (vectorFigure[i].toString());
+                String figList = (vectorRenders[i].toString());
                 listScreen.showList(figList);
             }
         }
-        tela.showMsg("------------------------------------");
+        basicScreen.showMsg("------------------------------------\n");
+    }
+    public void listOnlyFigura(int hash){
+        for (int i = 0; i < 10; i++) {
+            if ((vectorRenders[i] != null) && (vectorRenders[i].hashCode() == hash)) {
+
+                listScreen.showMsg("ID: " + i+1 + "\n");
+                String figList = (vectorRenders[i].toString());
+                listScreen.showList(figList);
+            }
+        }
+
+        basicScreen.showMsg("------------------------------------\n");
+    }
+    public void showOnlyOneFigure(int hash){
+        listOnlyFigura(hash);
+        listScreen.showMsg("\nEscolha apartir da ID quer mostrar:");
+        int id = listScreen.askInt();
+        listScreen.showMsg(vectorRenders[id-1].toString());
+        basicScreen.showMsg("------------------------------------\n");
     }
 
+    public void deleteRenderHash (int hash) {
+        listOnlyFigura(hash);
+        listScreen.showMsg("\nEscolha apartir da ID qual deseja apagar:");
+        int id = listScreen.askInt();
+        vectorRenders[id-1] = null;
+        listOnlyFigura(hash);
+    }
 }
 

@@ -35,7 +35,7 @@ public class LozengeConsole extends BasicConsole{
 
         return newLozenge;
     }
-    public EnumMenuOption askMenuLozenge(){
+    public EnumMenuOption askMenuLozenge(MenuConsole menuConsole){
 
         showMsg("MENU *Losango*: \n" +
                 "Digite uma opção: \n" +
@@ -60,7 +60,7 @@ public class LozengeConsole extends BasicConsole{
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return askMainMenuOption();
+                return menuConsole.askMenuMakeFig();
             default:
                 return EnumMenuOption.END;
         }

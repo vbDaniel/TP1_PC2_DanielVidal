@@ -39,7 +39,7 @@ public class CircleConsole extends BasicConsole{
         return newCircle;
     }
 
-    public EnumMenuOption askMenuCircle(){
+    public EnumMenuOption askMenuCircle(MenuConsole menuConsole){
 
         showMsg("MENU *Circulo*: \n" +
                         "Digite uma opção: \n" +
@@ -64,7 +64,7 @@ public class CircleConsole extends BasicConsole{
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return askMainMenuOption();
+                return menuConsole.askMainMenuOption();
             default:
                 return EnumMenuOption.END;
         }

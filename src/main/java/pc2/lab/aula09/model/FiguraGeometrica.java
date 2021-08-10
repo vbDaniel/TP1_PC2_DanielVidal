@@ -9,4 +9,9 @@ public class FiguraGeometrica extends Render{
     public double getPerimetro(){
         return -1;
     }
+
+    @Override
+    public int hashCode() {
+        return 10;
+    }
 }

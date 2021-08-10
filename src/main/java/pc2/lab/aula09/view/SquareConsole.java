@@ -23,9 +23,9 @@ public class SquareConsole extends BasicConsole{
                     "Ponto Origem: \nx: " + newPoint.getX() + "\ny: " + newPoint.getY() + "\n" +
                     "\n" +
                     "Caso queira mudar digite 1 se não digite 2: ");
-            System.out.println("ante" + verif);
-                    verif = in.nextInt();
-            System.out.println("dpps" + verif);
+
+            verif = in.nextInt();
+
 
             newSquare = new Square(newPoint, newSide);
         }
@@ -33,7 +33,7 @@ public class SquareConsole extends BasicConsole{
     }
 
 
-    public EnumMenuOption askMenuSquare(){
+    public EnumMenuOption askMenuSquare(MenuConsole menuScreen){
 
         showMsg("MENU *Quadrado*: \n" +
                 "Digite uma opção: \n" +
@@ -58,7 +58,7 @@ public class SquareConsole extends BasicConsole{
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return askMainMenuOption();
+                return menuScreen.askMenuMakeFig();
             default:
                 return EnumMenuOption.END;
         }

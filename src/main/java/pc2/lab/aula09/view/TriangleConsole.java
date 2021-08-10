@@ -87,7 +87,7 @@ public class TriangleConsole extends BasicConsole{
         return newTriangleEquilateral;
     }
 
-    public EnumMenuOption askMenuTriangulo(){
+    public EnumMenuOption askMenuTriangulo(MenuConsole menuConsole){
 
         showMsg("MENU *Triangulo*: \n" +
                 "Digite uma opção: \n" +
@@ -112,7 +112,32 @@ public class TriangleConsole extends BasicConsole{
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return askMainMenuOption();
+                return menuConsole.askMenuMakeFig();
+            default:
+                return EnumMenuOption.END;
+        }
+
+    }
+    public EnumMenuOption askTriangulo(MenuConsole menuConsole){
+
+        showMsg("MENU *TIPO de Triangulo*: \n" +
+                "Digite uma opção: \n" +
+                "1 - Novo Triangulo Equilatero\n" +
+                "2 - Novo Triangulo Isosceles\n" +
+                "3 - Novo Triangulo Right\n" +
+                "X - Voltar\n");
+
+        String option = in.next();
+
+        switch (option){
+            case "1":
+                return EnumMenuOption.TRIANGLEEQUILATERAL;
+            case "2":
+                return EnumMenuOption.TRIANGLEISOSCELES;
+            case "3":
+                return EnumMenuOption.TRIANGLERIGHT;
+            case "x":
+                return askMenuTriangulo(menuConsole);
             default:
                 return EnumMenuOption.END;
         }
