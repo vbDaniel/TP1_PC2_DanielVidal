@@ -73,52 +73,74 @@ public class CefetPaintByVidal {
             tela.showMsg("---------------------------------------\n");
             switch (opcao) {
                 case MAKEFIGURA:
-                    opcao2 = tela.askMenuMakeFig();
+                    opcao = tela.askMenuMakeFig();
+                        switch (opcao) {
+                            case SQUARE:
 
-                    switch (opcao2){
-                        case SQUARE:
-                            Square squareNew = squareScreen.askSquare();
-                            insertFiguraGeometrica(squareNew);
-                            break;
-                        case RECTANGLE:
-                            Rectangle newRectangle = rectangleScreen.askRectangle();
-                            insertFiguraGeometrica(newRectangle);
-                            break;
-                        case LOZENGE:
-                            Lozenge newLozenge = lozengeScreen.askLozenge();
-                            insertFiguraGeometrica(newLozenge);
-                            break;
-                        case TRAPEZE:
-                            Trapeze newTrapeze = trapezeScreen.askTrapeze();
-                            insertFiguraGeometrica(newTrapeze);
-                            break;
+                                Square squareNew = squareScreen.askSquare();
+                                insertFiguraGeometrica(squareNew);
+                                opcao = EnumMenuOption.MAKEFIGURA;
+                                break;
+                            case RECTANGLE:
+                                Rectangle newRectangle = rectangleScreen.askRectangle();
+                                insertFiguraGeometrica(newRectangle);
+                                break;
+                            case LOZENGE:
+                                Lozenge newLozenge = lozengeScreen.askLozenge();
+                                insertFiguraGeometrica(newLozenge);
+                                break;
+                            case TRAPEZE:
+                                Trapeze newTrapeze = trapezeScreen.askTrapeze();
+                                insertFiguraGeometrica(newTrapeze);
+                                break;
 
-                        case TRIANGLERIGHT:
-                            Triangle newTriangleRight = triangleScreen.askTriangleRight();
-                            insertFiguraGeometrica(newTriangleRight);
-                            break;
-                        case TRIANGLEISOSCELES:
-                            Triangle newTriangleIso = triangleScreen.askTriangleIsoceles();
-                            insertFiguraGeometrica(newTriangleIso);
-                            break;
-                        case TRIANGLEEQUILATERAL:
-                            Triangle newTriangleEqui = triangleScreen.askTriangleEquilateral();
-                            insertFiguraGeometrica(newTriangleEqui);
-                            break;
-                        case CIRCLE:
-                            Circle newCircle = circleScreen.askCircle();
-                            insertFiguraGeometrica(newCircle);
-                            break;
-                    }
-                    break;
+                            case TRIANGLERIGHT:
+                                Triangle newTriangleRight = triangleScreen.askTriangleRight();
+                                insertFiguraGeometrica(newTriangleRight);
+                                break;
+                            case TRIANGLEISOSCELES:
+                                Triangle newTriangleIso = triangleScreen.askTriangleIsoceles();
+                                insertFiguraGeometrica(newTriangleIso);
+                                break;
+                            case TRIANGLEEQUILATERAL:
+                                Triangle newTriangleEqui = triangleScreen.askTriangleEquilateral();
+                                insertFiguraGeometrica(newTriangleEqui);
+                                break;
+                            case CIRCLE:
+                                opcao = circleScreen.askMenuCircle();
+                                switch (opcao) {
+                                    case NEWCIRCLE:
+                                        Circle newCircle = circleScreen.askCircle();
+                                        insertFiguraGeometrica(newCircle);
+                                        break;
+                                    case EDIT:
+                                        editFiguraGeometrica();
+                                        break;
+                                    case LIST:
+                                        for (int i = 0; i < vectorFigure.length; i++) {
+                                            Circle verif = (Circle) vectorFigure[i];
+                                            if (verif.hashCode() == 5) {
+                                                listFiguraGeometrica();
+                                            }
+                                        }
+                                        break;
+                                    case SHOW:
+                                        break;
+                                    case DELETE:
+                                        break;
+
+                                }
+                                break;
+                        }
+
+
+                break;
 
                 case LIST:
                     listFiguraGeometrica();
                     break;
                 case DELETE:
-                    listFiguraGeometrica();
                     deleteFiguraGeometrica();
-                    listFiguraGeometrica();
                     break;
                 case DRAW:
                     canvas.desenhar(vectorFigure);
@@ -149,10 +171,19 @@ public class CefetPaintByVidal {
         }
     }
     public void deleteFiguraGeometrica() {
-
+        listFiguraGeometrica();
         listScreen.showMsg("Escolha apartir da ID da figura qual voce deseja apagar:");
         int id = listScreen.askInt();
         vectorFigure[id-1] = null;
+        listFiguraGeometrica();
+    }
+    public void editFiguraGeometrica() {
+        listFiguraGeometrica();
+        listScreen.showMsg("Escolha apartir da ID da figura qual voce deseja EDITAR:");
+        int id = listScreen.askInt();
+        vectorFigure[id-1] = circleScreen.askCircle();
+
+        listFiguraGeometrica();
 
     }
     public void listFiguraGeometrica(){
@@ -163,6 +194,8 @@ public class CefetPaintByVidal {
                 listScreen.showList(figList);
             }
         }
+        tela.showMsg("------------------------------------");
     }
+
 }
 

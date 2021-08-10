@@ -53,4 +53,9 @@ public class Circle extends FiguraGeometrica{
                 "}\n" +
                 "---------------------------------------\n";
     }
+
+    @Override
+    public int hashCode() {
+        return 5;
+    }
 }

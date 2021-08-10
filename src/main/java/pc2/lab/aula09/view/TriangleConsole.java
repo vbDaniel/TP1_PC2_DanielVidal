@@ -1,6 +1,7 @@
 package pc2.lab.aula09.view;
 
 import pc2.lab.aula09.model.*;
+import pc2.lab.aula09.model.enums.EnumMenuOption;
 
 public class TriangleConsole extends BasicConsole{
 
@@ -86,4 +87,35 @@ public class TriangleConsole extends BasicConsole{
         return newTriangleEquilateral;
     }
 
+    public EnumMenuOption askMenuTriangulo(){
+
+        showMsg("MENU *Triangulo*: \n" +
+                "Digite uma opção: \n" +
+                "1 - Novo Triangulo\n" +
+                "2 - Editar Triangulo(Selecionar Id e Editar)\n" +
+                "3 - Listar Triangulo(Listar Itens do Tipo) \n" +
+                "4 - Mostrar o Triangulo(Listar detalhes de 1 Itens) \n" +
+                "5 - Excluir (Excluir Id)\n" +
+                "X - Voltar\n");
+
+        String option = in.next();
+
+        switch (option){
+            case "1":
+                return EnumMenuOption.NEWTRIANGLE;
+            case "2":
+                return EnumMenuOption.EDIT;
+            case "3":
+                return EnumMenuOption.LIST;
+            case "4":
+                return EnumMenuOption.SHOW;
+            case "5":
+                return EnumMenuOption.DELETE;
+            case "X":
+                return askMainMenuOption();
+            default:
+                return EnumMenuOption.END;
+        }
+
+    }
 }

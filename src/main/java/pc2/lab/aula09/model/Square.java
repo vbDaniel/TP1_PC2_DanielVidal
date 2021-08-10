@@ -78,6 +78,6 @@ public class Square extends Rectangle {
 
     @Override
     public int hashCode() {
-        return sideSquade;
+        return 1;
     }
 }
