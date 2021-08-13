@@ -2,7 +2,7 @@ package pc2.lab.aula09.controller;
 
 import pc2.lab.aula09.model.*;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.*;
+import pc2.lab.aula09.view.cli.*;
 
 /**
  * A classe que é a base das interações do menu.
@@ -77,10 +77,10 @@ public class CefetPaintByVidal {
                                         insertRender(squareNew);
                                         break;
                                     case EDIT:
-                                        editRendersGeometrics();
+                                        editOnlyRender(1);
                                         break;
                                     case LIST:
-                                        listOnlyFigura(1);
+                                        listOnlyRender(1);
                                         break;
                                     case SHOW:
                                         showOnlyOneFigure(1);
@@ -97,17 +97,17 @@ public class CefetPaintByVidal {
                             //2----------------------------------------------------------------------
                             case RECTANGLE:
 
-                                opcao = rectangleScreen.askMenuRectangle(menuScreen);
-                                switch (opcao) {
+                                EnumMenuOption opcaoDois = rectangleScreen.askMenuRectangle(menuScreen);
+                                switch (opcaoDois) {
                                     case NEWRECTANGLE:
                                         Rectangle newRectangle = rectangleScreen.askRectangle();
                                         insertRender(newRectangle);
                                         break;
                                     case EDIT:
-                                        editRendersGeometrics();
+                                        editOnlyRender(2);
                                         break;
                                     case LIST:
-                                        listOnlyFigura(2);
+                                        listOnlyRender(2);
                                         break;
                                     case SHOW:
                                         showOnlyOneFigure(2);
@@ -131,10 +131,10 @@ public class CefetPaintByVidal {
                                         insertRender(newLozenge);
                                         break;
                                     case EDIT:
-                                        editRendersGeometrics();
+                                        editOnlyRender(3);
                                         break;
                                     case LIST:
-                                        listOnlyFigura(3);
+                                        listOnlyRender(3);
                                         break;
                                     case SHOW:
                                         showOnlyOneFigure(3);
@@ -159,10 +159,10 @@ public class CefetPaintByVidal {
                                         insertRender(newTrapeze);
                                         break;
                                     case EDIT:
-                                        editRendersGeometrics();
+                                        editOnlyRender(4);
                                         break;
                                     case LIST:
-                                        listOnlyFigura(4);
+                                        listOnlyRender(4);
                                         break;
                                     case SHOW:
                                         showOnlyOneFigure(4);
@@ -186,10 +186,10 @@ public class CefetPaintByVidal {
                                         insertRender(newCircle);
                                         break;
                                     case EDIT:
-                                        editRendersGeometrics();
+                                        editOnlyRender(5);
                                         break;
                                     case LIST:
-                                        listOnlyFigura(5);
+                                        listOnlyRender(5);
                                         break;
                                     case SHOW:
                                         showOnlyOneFigure(5);
@@ -204,33 +204,19 @@ public class CefetPaintByVidal {
                             //6----------------------------------------------------------------------
                             case TRIANGLE:
 
-                                opcao = triangleScreen.askMenuTriangulo(menuScreen);
+                                opcao = triangleScreen.askMenuTriangulo();
                                 switch (opcao) {
                                     case NEWTRIANGLE:
-                                        opcao = triangleScreen.askTriangulo(menuScreen);
-                                        switch (opcao) {
-                                            case TRIANGLEEQUILATERAL:
-                                                Circle newCircle = circleScreen.askCircle();
-                                                insertRender(newCircle);
-                                                break;
-                                            case TRIANGLEISOSCELES:
-                                                Triangle newTriangleIso = triangleScreen.askTriangleIsoceles();
-                                                insertRender(newTriangleIso);
-                                                break;
-                                            case TRIANGLERIGHT:
-                                                Triangle newTriangleRight = triangleScreen.askTriangleRight();
-                                                insertRender(newTriangleRight);
-                                                break;
-                                            default:break;
-                                        }
+                                        opcao = triangleScreen.askTrianguloEnum();
+                                        triangleScreen.askTriangle(this);
                                         break;
 
                                     case EDIT:
-                                        editRendersGeometrics();
+                                        editOnlyRender(6);
                                         break;
 
                                     case LIST:
-                                        listOnlyFigura(6);
+                                        listOnlyRender(6);
                                         break;
                                     case SHOW:
                                         showOnlyOneFigure(6);
@@ -254,10 +240,10 @@ public class CefetPaintByVidal {
                                         insertRender(newRight);
                                         break;
                                     case EDIT:
-                                        editRendersGeometrics();
+                                        editOnlyRender(7);
                                         break;
                                     case LIST:
-                                        listOnlyFigura(7);
+                                        listOnlyRender(7);
                                         break;
                                     case SHOW:
                                         showOnlyOneFigure(7);
@@ -278,10 +264,10 @@ public class CefetPaintByVidal {
 
                                         break;
                                     case EDIT:
-                                        editRendersGeometrics();
+                                        editOnlyRender(8);
                                         break;
                                     case LIST:
-                                        listOnlyFigura(8);
+                                        listOnlyRender(8);
                                         break;
                                     case SHOW:
                                         showOnlyOneFigure(8);
@@ -344,18 +330,35 @@ public class CefetPaintByVidal {
         listRenders();
     }
 
-    public void editRendersGeometrics() {
-
-        listRenders();
+    public void editOnlyRender(int hash) {
+        listOnlyRender(hash);
 
         listScreen.showMsg("Escolha apartir da ID da qual voce deseja EDITAR:");
         int id = listScreen.askInt();
-        vectorRenders[id-1] = circleScreen.askCircle();
+        switch (hash){
+            case 1:
+                vectorRenders[id-1] = squareScreen.askSquare();
+                break;
+            case 2:
+                vectorRenders[id-1] = rectangleScreen.askRectangle();
+                break;
+            case 3:
+                vectorRenders[id-1] = lozengeScreen.askLozenge();
+                break;
+            case 4:
+                vectorRenders[id-1] = trapezeScreen.askTrapeze();
+                break;
+            case 5:
+                vectorRenders[id-1] = circleScreen.askCircle();
+                break;
+            case 6:
+                vectorRenders[id-1] = triangleScreen.askTriangle(this);
 
-        listRenders();
-
+        }
+        listOnlyRender(hash);
     }
-    public void listRenders(){
+
+      public void listRenders(){
         for (int i = 0; i < 10; i++) {
             if (vectorRenders[i] != null) {
                 listScreen.showMsg("ID: " + (i+1) + "\n");
@@ -365,11 +368,11 @@ public class CefetPaintByVidal {
         }
         basicScreen.showMsg("------------------------------------\n");
     }
-    public void listOnlyFigura(int hash){
+    public void listOnlyRender(int hash){
         for (int i = 0; i < 10; i++) {
             if ((vectorRenders[i] != null) && (vectorRenders[i].hashCode() == hash)) {
 
-                listScreen.showMsg("ID: " + i+1 + "\n");
+                listScreen.showMsg("ID: " + (i+1) + "\n");
                 String figList = (vectorRenders[i].toString());
                 listScreen.showList(figList);
             }
@@ -378,7 +381,7 @@ public class CefetPaintByVidal {
         basicScreen.showMsg("------------------------------------\n");
     }
     public void showOnlyOneFigure(int hash){
-        listOnlyFigura(hash);
+        listOnlyRender(hash);
         listScreen.showMsg("\nEscolha apartir da ID quer mostrar:");
         int id = listScreen.askInt();
         listScreen.showMsg(vectorRenders[id-1].toString());
@@ -386,11 +389,12 @@ public class CefetPaintByVidal {
     }
 
     public void deleteRenderHash (int hash) {
-        listOnlyFigura(hash);
+        listOnlyRender(hash);
         listScreen.showMsg("\nEscolha apartir da ID qual deseja apagar:");
         int id = listScreen.askInt();
         vectorRenders[id-1] = null;
-        listOnlyFigura(hash);
+        listOnlyRender(hash);
     }
+
 }
 

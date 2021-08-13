@@ -1,6 +1,4 @@
-package pc2.lab.aula09.view;
-
-import pc2.lab.aula09.model.enums.EnumMenuOption;
+package pc2.lab.aula09.view.gui;
 
 
 import java.util.Scanner;
@@ -14,12 +12,12 @@ import java.util.Scanner;
  * @version CefetPaint 1.0
  *
  */
-public class BasicConsole {
+public class BasicGui {
 
 
     protected Scanner in;
 
-    public BasicConsole(){
+    public BasicGui(){
         in = new Scanner(System.in);
     }
 

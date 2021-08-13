@@ -1,7 +1,6 @@
-package pc2.lab.aula09.view;
+package pc2.lab.aula09.view.cli;
 
 import pc2.lab.aula09.model.Point;
-import pc2.lab.aula09.model.Square;
 import pc2.lab.aula09.model.Trapeze;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
 

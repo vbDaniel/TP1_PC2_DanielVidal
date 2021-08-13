@@ -1,6 +1,5 @@
-package pc2.lab.aula09.view;
+package pc2.lab.aula09.view.cli;
 
-import pc2.lab.aula09.model.Circle;
 import pc2.lab.aula09.model.Lozenge;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.enums.EnumMenuOption;

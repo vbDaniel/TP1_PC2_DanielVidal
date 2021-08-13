@@ -1,4 +1,4 @@
-package pc2.lab.aula09.view;
+package pc2.lab.aula09.view.cli;
 
 public class ListConsole extends BasicConsole{
 
