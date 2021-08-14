@@ -261,7 +261,8 @@ public class CefetPaintByVidal {
                                 opcao = textConsole.askMenuText(menuScreen);
                                 switch (opcao) {
                                     case NEWTEXT:
-
+                                        Text newText = textConsole.askText();
+                                        insertRender(newText);
                                         break;
                                     case EDIT:
                                         editOnlyRender(8);
@@ -353,6 +354,13 @@ public class CefetPaintByVidal {
                 break;
             case 6:
                 vectorRenders[id-1] = triangleScreen.askTriangle(this);
+                break;
+            case 7:
+                vectorRenders[id-1] = rightScreen.askRight();
+                break;
+            case 8:
+                vectorRenders[id-1] = textConsole.askText();
+                break;
 
         }
         listOnlyRender(hash);
@@ -382,7 +390,7 @@ public class CefetPaintByVidal {
     }
     public void showOnlyOneFigure(int hash){
         listOnlyRender(hash);
-        listScreen.showMsg("\nEscolha apartir da ID quer mostrar:");
+        listScreen.showMsg("\nEscolha apartir da ID quer mostrar: ");
         int id = listScreen.askInt();
         listScreen.showMsg(vectorRenders[id-1].toString());
         basicScreen.showMsg("------------------------------------\n");
@@ -390,7 +398,7 @@ public class CefetPaintByVidal {
 
     public void deleteRenderHash (int hash) {
         listOnlyRender(hash);
-        listScreen.showMsg("\nEscolha apartir da ID qual deseja apagar:");
+        listScreen.showMsg("\nEscolha apartir da ID qual deseja apagar: ");
         int id = listScreen.askInt();
         vectorRenders[id-1] = null;
         listOnlyRender(hash);

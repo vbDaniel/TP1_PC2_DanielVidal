@@ -1,17 +1,18 @@
-package pc2.lab.aula09.view.cli;
+package pc2.lab.aula09.view.gui;
 
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Rectangle;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
+import pc2.lab.aula09.view.cli.BasicConsole;
 
-public class RectangleConsole extends BasicConsole{
+public class RectangleGui extends BasicConsole {
 
     public Rectangle askRectangle(){
 
         int verif = 1;
         Rectangle newRectangle = null;
         while (verif == 1) {
-            Point newPoint = new PointConsole().askPointOrigem();
+            Point newPoint = new PointGui().askPointOrigem();
 
             showMsg("Digite um inteiro para o tamanho da base do Retangulo:");
             int newBase  = in.nextInt();
@@ -34,7 +35,7 @@ public class RectangleConsole extends BasicConsole{
         return newRectangle;
     }
 
-    public EnumMenuOption askMenuRectangle(MenuConsole menuConsole){
+    public EnumMenuOption askMenuRectangle(MenuGui menuConsole){
 
         showMsg("MENU *Rectangle*: \n" +
                 "Digite uma opção: \n" +

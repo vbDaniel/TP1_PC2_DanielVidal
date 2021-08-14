@@ -1,17 +1,18 @@
-package pc2.lab.aula09.view.cli;
+package pc2.lab.aula09.view.gui;
 
 import pc2.lab.aula09.model.Lozenge;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
+import pc2.lab.aula09.view.cli.BasicConsole;
 
-public class LozengeConsole extends BasicConsole{
+public class LozengeGui extends BasicConsole {
 
     public Lozenge askLozenge(){
 
         int verif = 1;
         Lozenge newLozenge = null;
         while (verif == 1) {
-            Point newPoint = new PointConsole().askPointOrigem();
+            Point newPoint = new PointGui().askPointOrigem();
 
             showMsg("Digite um inteiro para a DIAGONAL maior de seu Losango: ");
             int newbigDiagonal = in.nextInt();
@@ -34,7 +35,7 @@ public class LozengeConsole extends BasicConsole{
 
         return newLozenge;
     }
-    public EnumMenuOption askMenuLozenge(MenuConsole menuConsole){
+    public EnumMenuOption askMenuLozenge(MenuGui menuConsole){
 
         showMsg("MENU *Losango*: \n" +
                 "Digite uma opção: \n" +

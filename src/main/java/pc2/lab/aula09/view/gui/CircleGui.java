@@ -1,8 +1,9 @@
-package pc2.lab.aula09.view.cli;
+package pc2.lab.aula09.view.gui;
 
 import pc2.lab.aula09.model.Circle;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
+import pc2.lab.aula09.view.cli.BasicConsole;
 
 /**
  * A classe que cria os objetos Circulos a partir dos dados dos usuarios;
@@ -11,13 +12,13 @@ import pc2.lab.aula09.model.enums.EnumMenuOption;
  * @version CefetPaint 1.0
  *
  */
-public class CircleConsole extends BasicConsole{
+public class CircleGui extends BasicConsole {
     public Circle askCircle(){
         int verif = 1;
         Circle newCircle = null;
         while (verif == 1) {
 
-            Point newcentralPoint =  new PointConsole().askPoint();
+            Point newcentralPoint =  new PointGui().askPoint();
             showMsg("Digite um inteiro para o RAIO de seu circulo: ");
             int newRadius = in.nextInt();
             showMsg("Digite um inteiro para a quantidade de Pontos que formaram um circulo: ");
@@ -39,7 +40,7 @@ public class CircleConsole extends BasicConsole{
         return newCircle;
     }
 
-    public EnumMenuOption askMenuCircle(MenuConsole menuConsole){
+    public EnumMenuOption askMenuCircle(MenuGui menuConsole){
 
         showMsg("MENU *Circulo*: \n" +
                         "Digite uma opção: \n" +

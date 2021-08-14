@@ -1,17 +1,18 @@
-package pc2.lab.aula09.view.cli;
+package pc2.lab.aula09.view.gui;
 
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Trapeze;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
+import pc2.lab.aula09.view.cli.BasicConsole;
 
-public class TrapezeConsole extends BasicConsole{
+public class TrapezeGui extends BasicConsole {
 
     public Trapeze askTrapeze() {
 
         int verif = 1;
         Trapeze newTrapeze = null;
         while (verif == 1) {
-            Point newPoint = new PointConsole().askPointOrigem();
+            Point newPoint = new PointGui().askPointOrigem();
 
             showMsg("Digite um inteiro para a ALTURA de seu trapézio: ");
             int hight = in.nextInt();
@@ -39,7 +40,7 @@ public class TrapezeConsole extends BasicConsole{
         return newTrapeze;
     }
 
-    public EnumMenuOption askMenuTrapeze(MenuConsole menuScreen){
+    public EnumMenuOption askMenuTrapeze(MenuGui menuScreen){
 
         showMsg("MENU *Trapezio*: \n" +
                 "Digite uma opção: \n" +

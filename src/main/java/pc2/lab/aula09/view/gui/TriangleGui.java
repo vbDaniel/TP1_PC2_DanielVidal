@@ -1,19 +1,20 @@
-package pc2.lab.aula09.view.cli;
+package pc2.lab.aula09.view.gui;
 
 import pc2.lab.aula09.controller.CefetPaintByVidal;
 import pc2.lab.aula09.model.*;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
+import pc2.lab.aula09.view.cli.BasicConsole;
 
 
-public class TriangleConsole extends BasicConsole{
+public class TriangleGui extends BasicConsole {
 
-    MenuConsole menuConsole = new MenuConsole();
+    MenuGui menuConsole = new MenuGui();
 
     public TriangleRight askTriangleRight(){
         int verif = 1;
         TriangleRight newTriangleRight = null;
         while (verif == 1) {
-            Point newPoint = new PointConsole().askPointOrigem();
+            Point newPoint = new PointGui().askPointOrigem();
 
             showLnMsg("Digite um inteiro para o tamanho da base do Triangulo Retangulo: ");
             int newBase  = in.nextInt();
@@ -43,7 +44,7 @@ public class TriangleConsole extends BasicConsole{
         TriangleIsosceles  newTriangleIsosceles = null;
         while (verif == 1){
 
-            Point newPoint = new PointConsole().askPointOrigem();
+            Point newPoint = new PointGui().askPointOrigem();
 
             showLnMsg("Digite um inteiro para o tamanho da base do Triangulo Isoceles: ");
             int newBase  = in.nextInt();
@@ -71,7 +72,7 @@ public class TriangleConsole extends BasicConsole{
         int verif = 1;
         TriangleEquilateral  newTriangleEquilateral = null;
         while (verif == 1){
-            Point newPoint = new PointConsole().askPointOrigem();
+            Point newPoint = new PointGui().askPointOrigem();
 
             showLnMsg("Digite um inteiro para o tamanho dos lados do seu Triangulo Equilatero: ");
             int newSide  = in.nextInt();
