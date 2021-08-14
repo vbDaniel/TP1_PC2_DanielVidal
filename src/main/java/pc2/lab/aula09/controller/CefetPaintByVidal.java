@@ -1,8 +1,13 @@
 package pc2.lab.aula09.controller;
 
+import pc2.lab.aula09.Dao.RenderDao;
 import pc2.lab.aula09.model.*;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
+import pc2.lab.aula09.view.Iview.*;
 import pc2.lab.aula09.view.cli.*;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * A classe que é a base das interações do menu.
@@ -17,18 +22,18 @@ public class CefetPaintByVidal {
 
 
     private Render[] vectorRenders;
-    private final BasicConsole basicScreen;
-    private final DesenhoBoard canvas;
-    private final SquareConsole squareScreen;
-    private final RectangleConsole rectangleScreen;
-    private final LozengeConsole lozengeScreen;
-    private final TrapezeConsole trapezeScreen;
-    private final TriangleConsole triangleScreen;
-    private final CircleConsole circleScreen;
-    private final ListConsole listScreen;
-    private final MenuConsole menuScreen;
-    private final RightConsole rightScreen;
-    private final TextConsole textConsole;
+    private final IBasicView basicScreen;
+    private final IDrawBoardView canvas;
+    private final ISquareView squareScreen;
+    private final IRectangleView rectangleScreen;
+    private final ILozengeView lozengeScreen;
+    private final ITrapezeView trapezeScreen;
+    private final ITriangleView triangleScreen;
+    private final ICircleView circleScreen;
+    private final IMenuView menuScreen;
+    private final IRightView rightScreen;
+    private final ITextView textConsole;
+    private final RenderDao dao;
 
 
     public CefetPaintByVidal() {
@@ -41,10 +46,10 @@ public class CefetPaintByVidal {
         trapezeScreen = new TrapezeConsole();
         triangleScreen = new TriangleConsole();
         circleScreen = new CircleConsole();
-        listScreen = new ListConsole();
         menuScreen = new MenuConsole();
         rightScreen = new RightConsole();
         textConsole = new TextConsole();
+        dao = new RenderDao();
     }
     /**
      * O método que mostra o menu apartir do Enum;
@@ -58,9 +63,9 @@ public class CefetPaintByVidal {
         do {
             opcao = menuScreen.askMainMenuOption();
 
-            basicScreen.showMsg("---------------------------------------\n");
-            basicScreen.showMsg("Você escolheu: " + opcao + "\n");
-            basicScreen.showMsg("---------------------------------------\n");
+            basicScreen.showMassage("---------------------------------------\n");
+            basicScreen.showMassage("Você escolheu: " + opcao + "\n");
+            basicScreen.showMassage("---------------------------------------\n");
             switch (opcao) {
                 case MAKERENDER:
 
@@ -298,6 +303,24 @@ public class CefetPaintByVidal {
                     break;
                 case DRAW:
                     break;
+                case SAVE:
+                    dao.saveDoc(vectorRenders);
+                    break;
+                case RECOVER:
+                    try{
+                        vectorRenders = dao.recoverDoc();
+                    }
+                    catch(FileNotFoundException noFile){
+                        basicScreen.showMassage("Arquivo não existe tente novamente ;)");
+                    }
+                    catch(IOException io){
+                        basicScreen.showMassage("Há algo errado tente novamente ;)");
+                    }
+                    catch (ClassNotFoundException noClass){
+                        basicScreen.showMassage("Há algo errado...");
+                    }
+
+                    break;
                 case END:
                     break;
                 default:
@@ -313,8 +336,8 @@ public class CefetPaintByVidal {
 
 
             if((vectorRenders[i] != null) && ( i == vectorRenders.length-1)){
-                listScreen.showSpace();
-
+                basicScreen.showLineMessage("O vetor de figuras está cheio, Delete uma figura para seguir.");
+                deleteRendersGeometrics();
             }
             if(vectorRenders[i] == null){
                 vectorRenders[i] = render;
@@ -325,17 +348,22 @@ public class CefetPaintByVidal {
     }
     public void deleteRendersGeometrics() {
         listRenders();
-        listScreen.showMsg("Escolha apartir da ID da qual voce deseja apagar:");
-        int id = listScreen.askInt();
+        int id = basicScreen.askInt("\nEscolha apartir da ID da qual deseja apagar:");
         vectorRenders[id-1] = null;
         listRenders();
+    }
+
+    public void deleteRenderHash (int hash) {
+        listOnlyRender(hash);
+        int id = basicScreen.askInt("\nEscolha apartir da ID qual deseja apagar: ");
+        vectorRenders[id-1] = null;
+        listOnlyRender(hash);
     }
 
     public void editOnlyRender(int hash) {
         listOnlyRender(hash);
 
-        listScreen.showMsg("Escolha apartir da ID da qual voce deseja EDITAR:");
-        int id = listScreen.askInt();
+        int id = basicScreen.askInt("\nEscolha apartir da ID da qual voce deseja EDITAR:");
         switch (hash){
             case 1:
                 vectorRenders[id-1] = squareScreen.askSquare();
@@ -369,40 +397,33 @@ public class CefetPaintByVidal {
       public void listRenders(){
         for (int i = 0; i < 10; i++) {
             if (vectorRenders[i] != null) {
-                listScreen.showMsg("ID: " + (i+1) + "\n");
+                basicScreen.showMassage("ID: " + (i+1) + "\n");
                 String figList = (vectorRenders[i].toString());
-                listScreen.showList(figList);
+                basicScreen.showLineMessage(figList);
             }
         }
-        basicScreen.showMsg("------------------------------------\n");
+        basicScreen.showMassage("------------------------------------\n");
     }
     public void listOnlyRender(int hash){
         for (int i = 0; i < 10; i++) {
             if ((vectorRenders[i] != null) && (vectorRenders[i].hashCode() == hash)) {
 
-                listScreen.showMsg("ID: " + (i+1) + "\n");
+                basicScreen.showMassage("ID: " + (i+1) + "\n");
                 String figList = (vectorRenders[i].toString());
-                listScreen.showList(figList);
+                basicScreen.showLineMessage(figList);
             }
         }
 
-        basicScreen.showMsg("------------------------------------\n");
+        basicScreen.showMassage("------------------------------------\n");
     }
     public void showOnlyOneFigure(int hash){
         listOnlyRender(hash);
-        listScreen.showMsg("\nEscolha apartir da ID quer mostrar: ");
-        int id = listScreen.askInt();
-        listScreen.showMsg(vectorRenders[id-1].toString());
-        basicScreen.showMsg("------------------------------------\n");
+        int id = basicScreen.askInt("\nEscolha apartir da ID quer mostrar: ");
+        basicScreen.showMassage(vectorRenders[id-1].toString());
+        basicScreen.showMassage("------------------------------------\n");
     }
 
-    public void deleteRenderHash (int hash) {
-        listOnlyRender(hash);
-        listScreen.showMsg("\nEscolha apartir da ID qual deseja apagar: ");
-        int id = listScreen.askInt();
-        vectorRenders[id-1] = null;
-        listOnlyRender(hash);
-    }
+
 
 }
 

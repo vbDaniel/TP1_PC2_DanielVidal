@@ -1,11 +1,12 @@
 package pc2.lab.aula09.view.cli;
 
 import pc2.lab.aula09.model.FiguraGeometrica;
+import pc2.lab.aula09.view.Iview.IDrawBoardView;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class DesenhoBoard {
+public class DesenhoBoard extends BasicConsole implements IDrawBoardView {
 
 
     private void criarEMostrarBoard() {

@@ -3,6 +3,8 @@ package pc2.lab.aula09.view.cli;
 import pc2.lab.aula09.model.Circle;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
+import pc2.lab.aula09.view.Iview.ICircleView;
+import pc2.lab.aula09.view.Iview.IMenuView;
 
 /**
  * A classe que cria os objetos Circulos a partir dos dados dos usuarios;
@@ -11,20 +13,20 @@ import pc2.lab.aula09.model.enums.EnumMenuOption;
  * @version CefetPaint 1.0
  *
  */
-public class CircleConsole extends BasicConsole{
+public class CircleConsole extends BasicConsole implements ICircleView {
     public Circle askCircle(){
         int verif = 1;
         Circle newCircle = null;
         while (verif == 1) {
 
             Point newcentralPoint =  new PointConsole().askPoint();
-            showMsg("Digite um inteiro para o RAIO de seu circulo: ");
+            showMassage("Digite um inteiro para o RAIO de seu circulo: ");
             int newRadius = in.nextInt();
-            showMsg("Digite um inteiro para a quantidade de Pontos que formaram um circulo: ");
+            showMassage("Digite um inteiro para a quantidade de Pontos que formaram um circulo: ");
             int newManyPoints = in.nextInt();
 
-            showMsg("----------------------------------------------------------------\n");
-            showMsg("Seu Circulo terá as seguintes dimensoes:\n" +
+            showMassage("----------------------------------------------------------------\n");
+            showMassage("Seu Circulo terá as seguintes dimensoes:\n" +
                     "Coordenadas centrais: " + newcentralPoint + "\n" +
                     "Raio: " + newRadius + "\n" +
                     "Quantia de Pontos: " + newManyPoints + "\n" +
@@ -39,9 +41,9 @@ public class CircleConsole extends BasicConsole{
         return newCircle;
     }
 
-    public EnumMenuOption askMenuCircle(MenuConsole menuConsole){
+    public EnumMenuOption askMenuCircle(IMenuView menuConsole){
 
-        showMsg("MENU *Circulo*: \n" +
+        showMassage("MENU *Circulo*: \n" +
                         "Digite uma opção: \n" +
                         "1 - Novo Circulo\n" +
                         "2 - Editar Circulo(Selecionar Id e Editar)\n" +

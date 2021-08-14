@@ -1,12 +1,13 @@
 package pc2.lab.aula09.view.cli;
 
 import pc2.lab.aula09.model.enums.EnumMenuOption;
+import pc2.lab.aula09.view.Iview.IMenuView;
 
-public class MenuConsole extends BasicConsole {
+public class MenuConsole extends BasicConsole implements IMenuView {
 
     public EnumMenuOption askMainMenuOption(){
         //Loop até entregar uma opção válida
-        showMsg("\nEnter a number or letter that matches your wish: \n" +
+        showMassage("\nEnter a number or letter that matches your wish: \n" +
 
                 "1 - Renderizaveis\n" +
                 "2 - To Delete\n" +
@@ -36,7 +37,7 @@ public class MenuConsole extends BasicConsole {
 
     public EnumMenuOption askMenuMakeFig(){
 
-        showMsg("\nEnter a number or letter that matches your wish or make: \n" +
+        showMassage("\nEnter a number or letter that matches your wish or make: \n" +
 
                 "1 - Square\n" +
                 "2 - Rectangle\n" +

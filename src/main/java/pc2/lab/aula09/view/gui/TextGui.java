@@ -15,11 +15,11 @@ public class TextGui extends BasicConsole {
         while (verif == 1) {
             Point newPoint = new PointGui().askPointOrigem();
 
-            showMsg("Digite o texto que deseja renderizar:");
+            showMassage("Digite o texto que deseja renderizar:");
             String newString  = in.next();
 
-            showMsg("----------------------------------------------------------------\n");
-            showMsg("Seu texto será:\n" +
+            showMassage("----------------------------------------------------------------\n");
+            showMassage("Seu texto será:\n" +
                     "=> " + newString + "\n" +
                     "\n" +
                     "Caso queira mudar digite 1 se não digite 2: ");
@@ -34,7 +34,7 @@ public class TextGui extends BasicConsole {
 
     public EnumMenuOption askMenuText(MenuGui menuConsole){
 
-        showMsg("MENU *Texto*: \n" +
+        showMassage("MENU *Texto*: \n" +
                 "Digite uma opção: \n" +
                 "1 - Novo Texto\n" +
                 "2 - Editar Texto(Selecionar Id e Editar)\n" +

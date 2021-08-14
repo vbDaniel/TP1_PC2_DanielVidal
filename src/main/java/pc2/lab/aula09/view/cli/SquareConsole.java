@@ -3,8 +3,10 @@ package pc2.lab.aula09.view.cli;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Square;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
+import pc2.lab.aula09.view.Iview.IMenuView;
+import pc2.lab.aula09.view.Iview.ISquareView;
 
-public class SquareConsole extends BasicConsole{
+public class SquareConsole extends BasicConsole implements ISquareView {
 
     public Square askSquare(){
         int verif = 1;
@@ -12,13 +14,13 @@ public class SquareConsole extends BasicConsole{
         while (verif == 1) {
             Point newPoint = new PointConsole().askPointOrigem();
 
-            showMsg("Digite um inteiro para o tamanho do lado do quadrado: ");
+            showMassage("Digite um inteiro para o tamanho do lado do quadrado: ");
             int newSide  = in.nextInt();
 
 
 
-            showMsg("----------------------------------------------------------------\n");
-            showMsg("Seu Quadrado terá as seguintes dimensoes:\n" +
+            showMassage("----------------------------------------------------------------\n");
+            showMassage("Seu Quadrado terá as seguintes dimensoes:\n" +
                     "Tamanho: " + newSide + "\n"+
                     "Ponto Origem: \nx: " + newPoint.getX() + "\ny: " + newPoint.getY() + "\n" +
                     "\n" +
@@ -33,9 +35,9 @@ public class SquareConsole extends BasicConsole{
     }
 
 
-    public EnumMenuOption askMenuSquare(MenuConsole menuScreen){
+    public EnumMenuOption askMenuSquare(IMenuView menuScreen){
 
-        showMsg("MENU *Quadrado*: \n" +
+        showMassage("MENU *Quadrado*: \n" +
                 "Digite uma opção: \n" +
                 "1 - Novo Quadrado\n" +
                 "2 - Editar Quadrados(Selecionar Id e Editar)\n" +

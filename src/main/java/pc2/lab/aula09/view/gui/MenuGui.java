@@ -7,7 +7,7 @@ public class MenuGui extends BasicConsole {
 
     public EnumMenuOption askMainMenuOption(){
         //Loop até entregar uma opção válida
-        showMsg("\nEnter a number or letter that matches your wish: \n" +
+        showMassage("\nEnter a number or letter that matches your wish: \n" +
 
                 "1 - Renderizaveis\n" +
                 "2 - To Delete\n" +
@@ -37,7 +37,7 @@ public class MenuGui extends BasicConsole {
 
     public EnumMenuOption askMenuMakeFig(){
 
-        showMsg("\nEnter a number or letter that matches your wish or make: \n" +
+        showMassage("\nEnter a number or letter that matches your wish or make: \n" +
 
                 "1 - Square\n" +
                 "2 - Rectangle\n" +

@@ -14,14 +14,14 @@ public class RectangleGui extends BasicConsole {
         while (verif == 1) {
             Point newPoint = new PointGui().askPointOrigem();
 
-            showMsg("Digite um inteiro para o tamanho da base do Retangulo:");
+            showMassage("Digite um inteiro para o tamanho da base do Retangulo:");
             int newBase  = in.nextInt();
-            showMsg("Digite um inteiro para o tamanho da altura do Retangulo:");
+            showMassage("Digite um inteiro para o tamanho da altura do Retangulo:");
             int newHight = in.nextInt();
 
 
-            showMsg("----------------------------------------------------------------\n");
-            showMsg("Seu Retangulo terá as seguintes dimensoes:\n" +
+            showMassage("----------------------------------------------------------------\n");
+            showMassage("Seu Retangulo terá as seguintes dimensoes:\n" +
                     "Base: " + newBase+ "\n" +
                     "Altura: " + newHight + "\n" +
                     "Ponto Origem => x: " + newPoint.getX() + "\ny: " + newPoint.getY() + "\n" +
@@ -37,7 +37,7 @@ public class RectangleGui extends BasicConsole {
 
     public EnumMenuOption askMenuRectangle(MenuGui menuConsole){
 
-        showMsg("MENU *Rectangle*: \n" +
+        showMassage("MENU *Rectangle*: \n" +
                 "Digite uma opção: \n" +
                 "1 - Novo Retangulo\n" +
                 "2 - Editar Retangulo(Selecionar Id e Editar)\n" +

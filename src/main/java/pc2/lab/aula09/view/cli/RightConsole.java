@@ -3,9 +3,11 @@ package pc2.lab.aula09.view.cli;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Right;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
+import pc2.lab.aula09.view.Iview.IMenuView;
+import pc2.lab.aula09.view.Iview.IRightView;
 
 
-public class RightConsole extends BasicConsole{
+public class RightConsole extends BasicConsole implements IRightView {
 
     public Right askRight(){
         int verif = 1;
@@ -17,8 +19,8 @@ public class RightConsole extends BasicConsole{
 
 
 
-            showMsg("----------------------------------------------------------------\n");
-            showMsg("Sua reta terá as seguintes dimensoes:\n" +
+            showMassage("----------------------------------------------------------------\n");
+            showMassage("Sua reta terá as seguintes dimensoes:\n" +
                     "Ponto Origem \n{ x: " + newPoint.getX() + "\ny: " + newPoint.getY() + "  }\n" +
                     "Ponto Final \n{ x: " + newPoint.getX() + "\ny: " + newPoint.getY() + "  }\n" +
                     "\n" +
@@ -31,9 +33,9 @@ public class RightConsole extends BasicConsole{
         return newRight;
     }
 
-    public EnumMenuOption askMenuRight(MenuConsole menuScreen){
+    public EnumMenuOption askMenuRight(IMenuView menuScreen){
 
-        showMsg("MENU *Reta*: \n" +
+        showMassage("MENU *Reta*: \n" +
                 "Digite uma opção: \n" +
                 "1 - Novo Reta\n" +
                 "2 - Editar Reta(Selecionar Id e Editar)\n" +

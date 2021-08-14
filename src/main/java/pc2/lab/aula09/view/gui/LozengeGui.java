@@ -14,14 +14,14 @@ public class LozengeGui extends BasicConsole {
         while (verif == 1) {
             Point newPoint = new PointGui().askPointOrigem();
 
-            showMsg("Digite um inteiro para a DIAGONAL maior de seu Losango: ");
+            showMassage("Digite um inteiro para a DIAGONAL maior de seu Losango: ");
             int newbigDiagonal = in.nextInt();
-            showMsg("Digite um inteiro para a DIAGONAL menor de seu Losango: ");
+            showMassage("Digite um inteiro para a DIAGONAL menor de seu Losango: ");
             int newsmallDiagonal = in.nextInt();
 
 
-            showMsg("----------------------------------------------------------------\n");
-            showMsg("Seu Losango terá as seguintes dimensoes:\n" +
+            showMassage("----------------------------------------------------------------\n");
+            showMassage("Seu Losango terá as seguintes dimensoes:\n" +
                     "Diagonal maior: " + newbigDiagonal + "\n" +
                     "Diagonal menor: " + newsmallDiagonal + "\n" +
                     "Ponto Origem => \nx: " + newPoint.getX() + "\ny: " + newPoint.getY()+ "\n" +
@@ -37,7 +37,7 @@ public class LozengeGui extends BasicConsole {
     }
     public EnumMenuOption askMenuLozenge(MenuGui menuConsole){
 
-        showMsg("MENU *Losango*: \n" +
+        showMassage("MENU *Losango*: \n" +
                 "Digite uma opção: \n" +
                 "1 - Novo Losango\n" +
                 "2 - Editar Losango(Selecionar Id e Editar)\n" +

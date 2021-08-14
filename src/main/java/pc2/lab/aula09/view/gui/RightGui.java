@@ -18,8 +18,8 @@ public class RightGui extends BasicConsole {
 
 
 
-            showMsg("----------------------------------------------------------------\n");
-            showMsg("Sua reta terá as seguintes dimensoes:\n" +
+            showMassage("----------------------------------------------------------------\n");
+            showMassage("Sua reta terá as seguintes dimensoes:\n" +
                     "Ponto Origem \n{ x: " + newPoint.getX() + "\ny: " + newPoint.getY() + "  }\n" +
                     "Ponto Final \n{ x: " + newPoint.getX() + "\ny: " + newPoint.getY() + "  }\n" +
                     "\n" +
@@ -34,7 +34,7 @@ public class RightGui extends BasicConsole {
 
     public EnumMenuOption askMenuRight(MenuGui menuScreen){
 
-        showMsg("MENU *Reta*: \n" +
+        showMassage("MENU *Reta*: \n" +
                 "Digite uma opção: \n" +
                 "1 - Novo Reta\n" +
                 "2 - Editar Reta(Selecionar Id e Editar)\n" +

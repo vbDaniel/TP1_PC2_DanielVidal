@@ -3,8 +3,10 @@ package pc2.lab.aula09.view.cli;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Rectangle;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
+import pc2.lab.aula09.view.Iview.IMenuView;
+import pc2.lab.aula09.view.Iview.IRectangleView;
 
-public class RectangleConsole extends BasicConsole{
+public class RectangleConsole extends BasicConsole implements IRectangleView {
 
     public Rectangle askRectangle(){
 
@@ -13,14 +15,14 @@ public class RectangleConsole extends BasicConsole{
         while (verif == 1) {
             Point newPoint = new PointConsole().askPointOrigem();
 
-            showMsg("Digite um inteiro para o tamanho da base do Retangulo:");
+            showMassage("Digite um inteiro para o tamanho da base do Retangulo:");
             int newBase  = in.nextInt();
-            showMsg("Digite um inteiro para o tamanho da altura do Retangulo:");
+            showMassage("Digite um inteiro para o tamanho da altura do Retangulo:");
             int newHight = in.nextInt();
 
 
-            showMsg("----------------------------------------------------------------\n");
-            showMsg("Seu Retangulo terá as seguintes dimensoes:\n" +
+            showMassage("----------------------------------------------------------------\n");
+            showMassage("Seu Retangulo terá as seguintes dimensoes:\n" +
                     "Base: " + newBase+ "\n" +
                     "Altura: " + newHight + "\n" +
                     "Ponto Origem => x: " + newPoint.getX() + "\ny: " + newPoint.getY() + "\n" +
@@ -34,9 +36,9 @@ public class RectangleConsole extends BasicConsole{
         return newRectangle;
     }
 
-    public EnumMenuOption askMenuRectangle(MenuConsole menuConsole){
+    public EnumMenuOption askMenuRectangle(IMenuView menuConsole){
 
-        showMsg("MENU *Rectangle*: \n" +
+        showMassage("MENU *Rectangle*: \n" +
                 "Digite uma opção: \n" +
                 "1 - Novo Retangulo\n" +
                 "2 - Editar Retangulo(Selecionar Id e Editar)\n" +

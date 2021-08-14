@@ -19,13 +19,13 @@ public class CircleGui extends BasicConsole {
         while (verif == 1) {
 
             Point newcentralPoint =  new PointGui().askPoint();
-            showMsg("Digite um inteiro para o RAIO de seu circulo: ");
+            showMassage("Digite um inteiro para o RAIO de seu circulo: ");
             int newRadius = in.nextInt();
-            showMsg("Digite um inteiro para a quantidade de Pontos que formaram um circulo: ");
+            showMassage("Digite um inteiro para a quantidade de Pontos que formaram um circulo: ");
             int newManyPoints = in.nextInt();
 
-            showMsg("----------------------------------------------------------------\n");
-            showMsg("Seu Circulo terá as seguintes dimensoes:\n" +
+            showMassage("----------------------------------------------------------------\n");
+            showMassage("Seu Circulo terá as seguintes dimensoes:\n" +
                     "Coordenadas centrais: " + newcentralPoint + "\n" +
                     "Raio: " + newRadius + "\n" +
                     "Quantia de Pontos: " + newManyPoints + "\n" +
@@ -42,7 +42,7 @@ public class CircleGui extends BasicConsole {
 
     public EnumMenuOption askMenuCircle(MenuGui menuConsole){
 
-        showMsg("MENU *Circulo*: \n" +
+        showMassage("MENU *Circulo*: \n" +
                         "Digite uma opção: \n" +
                         "1 - Novo Circulo\n" +
                         "2 - Editar Circulo(Selecionar Id e Editar)\n" +

@@ -14,18 +14,18 @@ public class TrapezeGui extends BasicConsole {
         while (verif == 1) {
             Point newPoint = new PointGui().askPointOrigem();
 
-            showMsg("Digite um inteiro para a ALTURA de seu trapézio: ");
+            showMassage("Digite um inteiro para a ALTURA de seu trapézio: ");
             int hight = in.nextInt();
-            showMsg("Lembre-se a BASE é dividida em 3 parte que definem o angulo de seu trapezio(e a soma forma a base em si):\n");
-            showMsg("Digite um inteiro para a primeira parte da BASE que define o angulo da esquerda: ");
+            showMassage("Lembre-se a BASE é dividida em 3 parte que definem o angulo de seu trapezio(e a soma forma a base em si):\n");
+            showMassage("Digite um inteiro para a primeira parte da BASE que define o angulo da esquerda: ");
             int firstPartBase = in.nextInt();
-            showMsg("Digite um inteiro para a segunda parte da BASE que define o tamanho da BASE menor: ");
+            showMassage("Digite um inteiro para a segunda parte da BASE que define o tamanho da BASE menor: ");
             int secundPartBase = in.nextInt();
-            showMsg("Digite um inteiro para a primeira parte da BASE que define o angulo da Direita: ");
+            showMassage("Digite um inteiro para a primeira parte da BASE que define o angulo da Direita: ");
             int thirdPartBase = in.nextInt();
 
-            showMsg("----------------------------------------------------------------\n");
-            showMsg("Seu Trapesio terá as seguintes dimensoes:\n" +
+            showMassage("----------------------------------------------------------------\n");
+            showMassage("Seu Trapesio terá as seguintes dimensoes:\n" +
                     "Altura: " + hight + "\n" +
                     "Base Maior: " + (firstPartBase + secundPartBase + thirdPartBase) + "\n" +
                     "Base Menor: " + secundPartBase + "\n" +
@@ -42,7 +42,7 @@ public class TrapezeGui extends BasicConsole {
 
     public EnumMenuOption askMenuTrapeze(MenuGui menuScreen){
 
-        showMsg("MENU *Trapezio*: \n" +
+        showMassage("MENU *Trapezio*: \n" +
                 "Digite uma opção: \n" +
                 "1 - Novo Trapezio\n" +
                 "2 - Editar Trapezio(Selecionar Id e Editar)\n" +

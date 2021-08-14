@@ -5,17 +5,17 @@ import pc2.lab.aula09.model.enums.EnumMenuOption;
 
 public class PointConsole extends BasicConsole{
     public Point askPoint(){
-        showMsg("Digite as Coordenadas de X e Y do ponto CENTRAL desejado.\nX: ");
+        showMassage("Digite as Coordenadas de X e Y do ponto CENTRAL desejado.\nX: ");
         int x = in.nextInt();
-        showMsg("Y: ");
+        showMassage("Y: ");
         int y = in.nextInt();
         Point newPoint = new Point(x, y);
         return newPoint;
     }
     public Point askPointOrigem(){
-        showMsg("Digite as Coordenadas de X e Y do ponto ORIGEM de sua figura.\nX: ");
+        showMassage("Digite as Coordenadas de X e Y do ponto ORIGEM de sua figura.\nX: ");
         int x = in.nextInt();
-        showMsg("Y: ");
+        showMassage("Y: ");
         int y = in.nextInt();
         Point newPoint = new Point(x, y);
         return newPoint;
@@ -24,7 +24,7 @@ public class PointConsole extends BasicConsole{
 
     public EnumMenuOption askMenuPoint(MenuConsole menuConsole){
 
-        showMsg("MENU *Ponto*: \n" +
+        showMassage("MENU *Ponto*: \n" +
                 "Digite uma opção: \n" +
                 "1 - Novo Ponto\n" +
                 "2 - Editar Ponto(Selecionar Id e Editar)\n" +

@@ -1,11 +1,12 @@
 package pc2.lab.aula09.view.cli;
 
 import pc2.lab.aula09.model.Point;
-import pc2.lab.aula09.model.Rectangle;
 import pc2.lab.aula09.model.Text;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
+import pc2.lab.aula09.view.Iview.IMenuView;
+import pc2.lab.aula09.view.Iview.ITextView;
 
-public class TextConsole extends BasicConsole{
+public class TextConsole extends BasicConsole implements ITextView {
 
     public Text askText(){
         int verif = 1;
@@ -15,11 +16,11 @@ public class TextConsole extends BasicConsole{
         while (verif == 1) {
             Point newPoint = new PointConsole().askPointOrigem();
 
-            showMsg("Digite o texto que deseja renderizar:");
+            showMassage("Digite o texto que deseja renderizar:");
             String newString  = in.next();
 
-            showMsg("----------------------------------------------------------------\n");
-            showMsg("Seu texto será:\n" +
+            showMassage("----------------------------------------------------------------\n");
+            showMassage("Seu texto será:\n" +
                     "=> " + newString + "\n" +
                     "\n" +
                     "Caso queira mudar digite 1 se não digite 2: ");
@@ -32,9 +33,9 @@ public class TextConsole extends BasicConsole{
     }
 
 
-    public EnumMenuOption askMenuText(MenuConsole menuConsole){
+    public EnumMenuOption askMenuText(IMenuView menuConsole){
 
-        showMsg("MENU *Texto*: \n" +
+        showMassage("MENU *Texto*: \n" +
                 "Digite uma opção: \n" +
                 "1 - Novo Texto\n" +
                 "2 - Editar Texto(Selecionar Id e Editar)\n" +

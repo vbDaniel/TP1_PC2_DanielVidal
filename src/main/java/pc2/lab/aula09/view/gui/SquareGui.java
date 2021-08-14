@@ -13,13 +13,13 @@ public class SquareGui extends BasicConsole {
         while (verif == 1) {
             Point newPoint = new PointGui().askPointOrigem();
 
-            showMsg("Digite um inteiro para o tamanho do lado do quadrado: ");
+            showMassage("Digite um inteiro para o tamanho do lado do quadrado: ");
             int newSide  = in.nextInt();
 
 
 
-            showMsg("----------------------------------------------------------------\n");
-            showMsg("Seu Quadrado terá as seguintes dimensoes:\n" +
+            showMassage("----------------------------------------------------------------\n");
+            showMassage("Seu Quadrado terá as seguintes dimensoes:\n" +
                     "Tamanho: " + newSide + "\n"+
                     "Ponto Origem: \nx: " + newPoint.getX() + "\ny: " + newPoint.getY() + "\n" +
                     "\n" +
@@ -36,7 +36,7 @@ public class SquareGui extends BasicConsole {
 
     public EnumMenuOption askMenuSquare(MenuGui menuScreen){
 
-        showMsg("MENU *Quadrado*: \n" +
+        showMassage("MENU *Quadrado*: \n" +
                 "Digite uma opção: \n" +
                 "1 - Novo Quadrado\n" +
                 "2 - Editar Quadrados(Selecionar Id e Editar)\n" +
