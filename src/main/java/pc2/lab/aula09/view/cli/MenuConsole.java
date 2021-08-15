@@ -9,9 +9,11 @@ public class MenuConsole extends BasicConsole implements IMenuView {
         //Loop até entregar uma opção válida
         showMassage("\nEnter a number or letter that matches your wish: \n" +
 
-                "1 - Renderizaveis\n" +
-                "2 - To Delete\n" +
+                "R - Renderizaveis\n" +
+                "A - To Delete\n" +
                 "D - To Draw\n" +
+                "S - To Save\n" +
+                "C - To Load Save\n" +
                 "L - To List\n" +
                 "X - To END Paint\n" +
                 "------------------------------------------------------\n" +
@@ -20,18 +22,22 @@ public class MenuConsole extends BasicConsole implements IMenuView {
         String option = in.next();
 
         switch (option){
-            case "1":
+            case "R":
                 return EnumMenuOption.MAKERENDER;
-            case "2":
+            case "A":
                 return EnumMenuOption.DELETE;
             case "D":
                 return EnumMenuOption.DRAW;
+            case "S":
+                return EnumMenuOption.SAVE;
+            case "C":
+                return EnumMenuOption.RECOVER;
             case "L":
                 return EnumMenuOption.LIST;
             case "X":
                 return askMenuMakeFig();
             default:
-                return EnumMenuOption.END;
+                return null;
         }
     }
 
