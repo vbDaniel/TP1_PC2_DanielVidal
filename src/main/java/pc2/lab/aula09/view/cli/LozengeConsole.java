@@ -6,7 +6,7 @@ import pc2.lab.aula09.model.enums.EnumMenuOption;
 import pc2.lab.aula09.view.Iview.ILozengeView;
 import pc2.lab.aula09.view.Iview.IMenuView;
 
-public class LozengeConsole extends BasicConsole implements ILozengeView {
+public class LozengeConsole extends MenuConsole implements ILozengeView {
 
     public Lozenge askLozenge(){
 
@@ -36,7 +36,7 @@ public class LozengeConsole extends BasicConsole implements ILozengeView {
 
         return newLozenge;
     }
-    public EnumMenuOption askMenuLozenge(IMenuView menuConsole){
+    public EnumMenuOption askMenuLozenge(){
 
         showMassage("MENU *Losango*: \n" +
                 "Digite uma opção: \n" +
@@ -51,7 +51,7 @@ public class LozengeConsole extends BasicConsole implements ILozengeView {
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWLOZENGE;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":
@@ -61,7 +61,7 @@ public class LozengeConsole extends BasicConsole implements ILozengeView {
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return menuConsole.askMenuMakeFig();
+                return askMenuMakeFig();
             default:
                 return EnumMenuOption.END;
         }

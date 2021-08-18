@@ -3,15 +3,15 @@ package pc2.lab.aula09.view.gui;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Square;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.cli.BasicConsole;
+import pc2.lab.aula09.view.Iview.ISquareView;
 
-public class SquareGui extends BasicConsole {
+public class SquareConsole extends MenuConsole implements ISquareView {
 
     public Square askSquare(){
         int verif = 1;
         Square newSquare = null;
         while (verif == 1) {
-            Point newPoint = new PointGui().askPointOrigem();
+            Point newPoint = new PointConsole().askPointOrigem();
 
             showMassage("Digite um inteiro para o tamanho do lado do quadrado: ");
             int newSide  = in.nextInt();
@@ -34,7 +34,7 @@ public class SquareGui extends BasicConsole {
     }
 
 
-    public EnumMenuOption askMenuSquare(MenuGui menuScreen){
+    public EnumMenuOption askMenuSquare(){
 
         showMassage("MENU *Quadrado*: \n" +
                 "Digite uma opção: \n" +
@@ -49,7 +49,7 @@ public class SquareGui extends BasicConsole {
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWSQUARE;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":
@@ -59,7 +59,7 @@ public class SquareGui extends BasicConsole {
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return menuScreen.askMenuMakeFig();
+                return askMenuMakeFig();
             default:
                 return EnumMenuOption.END;
         }

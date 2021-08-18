@@ -13,7 +13,7 @@ import pc2.lab.aula09.view.Iview.IMenuView;
  * @version CefetPaint 1.0
  *
  */
-public class CircleConsole extends BasicConsole implements ICircleView {
+public class CircleConsole extends MenuConsole implements ICircleView {
     public Circle askCircle(){
         int verif = 1;
         Circle newCircle = null;
@@ -41,7 +41,7 @@ public class CircleConsole extends BasicConsole implements ICircleView {
         return newCircle;
     }
 
-    public EnumMenuOption askMenuCircle(IMenuView menuConsole){
+    public EnumMenuOption askMenuCircle(){
 
         showMassage("MENU *Circulo*: \n" +
                         "Digite uma opção: \n" +
@@ -56,7 +56,7 @@ public class CircleConsole extends BasicConsole implements ICircleView {
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWCIRCLE;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":
@@ -66,7 +66,7 @@ public class CircleConsole extends BasicConsole implements ICircleView {
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return menuConsole.askMainMenuOption();
+                return askMainMenuOption();
             default:
                 return EnumMenuOption.END;
         }

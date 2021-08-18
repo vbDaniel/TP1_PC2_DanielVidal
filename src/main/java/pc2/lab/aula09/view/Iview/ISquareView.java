@@ -6,5 +6,5 @@ import pc2.lab.aula09.view.cli.MenuConsole;
 
 public interface ISquareView {
     public Square askSquare();
-    public EnumMenuOption askMenuSquare(IMenuView menuScreen);
+    public EnumMenuOption askMenuSquare();
 }

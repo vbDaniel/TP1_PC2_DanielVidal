@@ -37,7 +37,7 @@ public class PointConsole extends BasicConsole{
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWPOINT;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":

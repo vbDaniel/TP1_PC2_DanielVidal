@@ -6,5 +6,5 @@ import pc2.lab.aula09.view.cli.MenuConsole;
 
 public interface ICircleView {
     public Circle askCircle();
-    public EnumMenuOption askMenuCircle(IMenuView menuConsole);
+    public EnumMenuOption askMenuCircle();
 }

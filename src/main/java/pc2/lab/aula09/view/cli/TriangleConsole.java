@@ -1,12 +1,13 @@
 package pc2.lab.aula09.view.cli;
 
-import pc2.lab.aula09.controller.CefetPaintByVidal;
+import pc2.lab.aula09.Dao.RenderDao;
+import pc2.lab.aula09.controller.VidalPaintController;
 import pc2.lab.aula09.model.*;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
 import pc2.lab.aula09.view.Iview.ITriangleView;
 
 
-public class TriangleConsole extends BasicConsole implements ITriangleView {
+public class TriangleConsole extends MenuConsole implements ITriangleView {
 
     MenuConsole menuConsole = new MenuConsole();
 
@@ -107,7 +108,7 @@ public class TriangleConsole extends BasicConsole implements ITriangleView {
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWTRIANGLE;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":
@@ -123,7 +124,7 @@ public class TriangleConsole extends BasicConsole implements ITriangleView {
         }
 
     }
-    public EnumMenuOption askTrianguloEnum(){
+    public EnumMenuOption askTriangleEnum(){
 
         showMassage("MENU *TIPO de Triangulo*: \n" +
                 "Digite uma opção: \n" +
@@ -148,26 +149,29 @@ public class TriangleConsole extends BasicConsole implements ITriangleView {
         }
 
     }
-    public Triangle askTriangle (CefetPaintByVidal paint){
-        EnumMenuOption opcao;
-        opcao = askTrianguloEnum();
+
+    @Override
+    public Triangle askTriangle(RenderDao dao) {
+
+        EnumMenuOption opcao = askTriangleEnum();
 
         switch (opcao) {
             case TRIANGLEEQUILATERAL:
                 Triangle newTriagleEqui = askTriangleEquilateral();
-                paint.insertRender(newTriagleEqui);
+                dao.insertRender(newTriagleEqui);
                 return newTriagleEqui;
             case TRIANGLEISOSCELES:
                 Triangle newTriangleIso = askTriangleIsoceles();
-                paint.insertRender(newTriangleIso);
+                dao.insertRender(newTriangleIso);
                 return newTriangleIso;
             case TRIANGLERIGHT:
                 Triangle newTriangleRight = askTriangleRight();
-                paint.insertRender(newTriangleRight);
+                dao.insertRender(newTriangleRight);
                 return newTriangleRight;
             default:
-                return null;
+                break;
 
         }
+        return null;
     }
 }

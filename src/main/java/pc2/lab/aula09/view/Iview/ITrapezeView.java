@@ -6,5 +6,5 @@ import pc2.lab.aula09.view.cli.MenuConsole;
 
 public interface ITrapezeView {
     public Trapeze askTrapeze();
-    public EnumMenuOption askMenuTrapeze(IMenuView menuScreen);
+    public EnumMenuOption askMenuTrapeze();
 }

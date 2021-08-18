@@ -3,18 +3,18 @@ package pc2.lab.aula09.view.gui;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Right;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.cli.BasicConsole;
+import pc2.lab.aula09.view.Iview.IRightView;
 
 
-public class RightGui extends BasicConsole {
+public class RightConsole extends MenuConsole implements IRightView {
 
     public Right askRight(){
         int verif = 1;
         Right newRight = null;
         while (verif == 1) {
-            Point newPoint = new PointGui().askPointOrigem();
+            Point newPoint = new PointConsole().askPointOrigem();
 
-            Point finalPoint = new PointGui().askPoint();
+            Point finalPoint = new PointConsole().askPoint();
 
 
 
@@ -32,7 +32,7 @@ public class RightGui extends BasicConsole {
         return newRight;
     }
 
-    public EnumMenuOption askMenuRight(MenuGui menuScreen){
+    public EnumMenuOption askMenuRight(){
 
         showMassage("MENU *Reta*: \n" +
                 "Digite uma opção: \n" +
@@ -47,7 +47,7 @@ public class RightGui extends BasicConsole {
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWSQUARE;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":
@@ -57,7 +57,7 @@ public class RightGui extends BasicConsole {
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return menuScreen.askMenuMakeFig();
+                return askMenuMakeFig();
             default:
                 return EnumMenuOption.END;
         }

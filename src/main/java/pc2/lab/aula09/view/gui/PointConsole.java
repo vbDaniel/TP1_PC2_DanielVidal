@@ -2,9 +2,8 @@ package pc2.lab.aula09.view.gui;
 
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.cli.BasicConsole;
 
-public class PointGui extends BasicConsole {
+public class PointConsole extends BasicConsole {
     public Point askPoint(){
         showMassage("Digite as Coordenadas de X e Y do ponto CENTRAL desejado.\nX: ");
         int x = in.nextInt();
@@ -23,7 +22,7 @@ public class PointGui extends BasicConsole {
     }
 
 
-    public EnumMenuOption askMenuPoint(MenuGui menuConsole){
+    public EnumMenuOption askMenuPoint(MenuConsole menuConsole){
 
         showMassage("MENU *Ponto*: \n" +
                 "Digite uma opção: \n" +
@@ -38,7 +37,7 @@ public class PointGui extends BasicConsole {
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWPOINT;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":

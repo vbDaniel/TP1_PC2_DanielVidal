@@ -3,16 +3,16 @@ package pc2.lab.aula09.view.gui;
 import pc2.lab.aula09.model.Lozenge;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.cli.BasicConsole;
+import pc2.lab.aula09.view.Iview.ILozengeView;
 
-public class LozengeGui extends BasicConsole {
+public class LozengeConsole extends MenuConsole implements ILozengeView {
 
     public Lozenge askLozenge(){
 
         int verif = 1;
         Lozenge newLozenge = null;
         while (verif == 1) {
-            Point newPoint = new PointGui().askPointOrigem();
+            Point newPoint = new PointConsole().askPointOrigem();
 
             showMassage("Digite um inteiro para a DIAGONAL maior de seu Losango: ");
             int newbigDiagonal = in.nextInt();
@@ -35,7 +35,7 @@ public class LozengeGui extends BasicConsole {
 
         return newLozenge;
     }
-    public EnumMenuOption askMenuLozenge(MenuGui menuConsole){
+    public EnumMenuOption askMenuLozenge(){
 
         showMassage("MENU *Losango*: \n" +
                 "Digite uma opção: \n" +
@@ -50,7 +50,7 @@ public class LozengeGui extends BasicConsole {
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWLOZENGE;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":
@@ -60,7 +60,7 @@ public class LozengeGui extends BasicConsole {
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return menuConsole.askMenuMakeFig();
+                return askMenuMakeFig();
             default:
                 return EnumMenuOption.END;
         }

@@ -6,4 +6,5 @@ import pc2.lab.aula09.view.cli.MenuConsole;
 
 public interface IRectangleView {
     public Rectangle askRectangle();
-    public EnumMenuOption askMenuRectangle(IMenuView menuConsole);}
+    public EnumMenuOption askMenuRectangle();
+}

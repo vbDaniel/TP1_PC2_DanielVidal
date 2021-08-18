@@ -7,7 +7,7 @@ import pc2.lab.aula09.view.Iview.IMenuView;
 import pc2.lab.aula09.view.Iview.IRightView;
 
 
-public class RightConsole extends BasicConsole implements IRightView {
+public class RightConsole extends MenuConsole implements IRightView {
 
     public Right askRight(){
         int verif = 1;
@@ -33,7 +33,7 @@ public class RightConsole extends BasicConsole implements IRightView {
         return newRight;
     }
 
-    public EnumMenuOption askMenuRight(IMenuView menuScreen){
+    public EnumMenuOption askMenuRight(){
 
         showMassage("MENU *Reta*: \n" +
                 "Digite uma opção: \n" +
@@ -48,7 +48,7 @@ public class RightConsole extends BasicConsole implements IRightView {
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWSQUARE;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":
@@ -58,7 +58,7 @@ public class RightConsole extends BasicConsole implements IRightView {
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return menuScreen.askMenuMakeFig();
+                return askMenuMakeFig();
             default:
                 return EnumMenuOption.END;
         }

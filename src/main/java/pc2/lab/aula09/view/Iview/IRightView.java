@@ -6,5 +6,5 @@ import pc2.lab.aula09.view.Iview.IMenuView;
 
 public interface IRightView {
     public Right askRight();
-    public EnumMenuOption askMenuRight(IMenuView menuScreen);
+    public EnumMenuOption askMenuRight();
 }

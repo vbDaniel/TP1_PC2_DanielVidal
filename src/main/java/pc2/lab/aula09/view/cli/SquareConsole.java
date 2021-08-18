@@ -6,7 +6,7 @@ import pc2.lab.aula09.model.enums.EnumMenuOption;
 import pc2.lab.aula09.view.Iview.IMenuView;
 import pc2.lab.aula09.view.Iview.ISquareView;
 
-public class SquareConsole extends BasicConsole implements ISquareView {
+public class SquareConsole extends MenuConsole implements ISquareView {
 
     public Square askSquare(){
         int verif = 1;
@@ -35,7 +35,7 @@ public class SquareConsole extends BasicConsole implements ISquareView {
     }
 
 
-    public EnumMenuOption askMenuSquare(IMenuView menuScreen){
+    public EnumMenuOption askMenuSquare(){
 
         showMassage("MENU *Quadrado*: \n" +
                 "Digite uma opção: \n" +
@@ -50,7 +50,7 @@ public class SquareConsole extends BasicConsole implements ISquareView {
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWSQUARE;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":
@@ -60,7 +60,7 @@ public class SquareConsole extends BasicConsole implements ISquareView {
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return menuScreen.askMenuMakeFig();
+                return askMenuMakeFig();
             default:
                 return EnumMenuOption.END;
         }

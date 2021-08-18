@@ -6,7 +6,7 @@ import pc2.lab.aula09.model.enums.EnumMenuOption;
 import pc2.lab.aula09.view.Iview.IMenuView;
 import pc2.lab.aula09.view.Iview.IRectangleView;
 
-public class RectangleConsole extends BasicConsole implements IRectangleView {
+public class RectangleConsole extends MenuConsole implements IRectangleView {
 
     public Rectangle askRectangle(){
 
@@ -36,7 +36,7 @@ public class RectangleConsole extends BasicConsole implements IRectangleView {
         return newRectangle;
     }
 
-    public EnumMenuOption askMenuRectangle(IMenuView menuConsole){
+    public EnumMenuOption askMenuRectangle(){
 
         showMassage("MENU *Rectangle*: \n" +
                 "Digite uma opção: \n" +
@@ -51,7 +51,7 @@ public class RectangleConsole extends BasicConsole implements IRectangleView {
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWRECTANGLE;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":
@@ -61,7 +61,7 @@ public class RectangleConsole extends BasicConsole implements IRectangleView {
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return menuConsole.askMenuMakeFig();
+                return askMenuMakeFig();
             default:
                 return EnumMenuOption.END;
         }

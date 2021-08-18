@@ -3,9 +3,9 @@ package pc2.lab.aula09.view.gui;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Text;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.cli.BasicConsole;
+import pc2.lab.aula09.view.Iview.ITextView;
 
-public class TextGui extends BasicConsole {
+public class TextConsole extends MenuConsole implements ITextView {
 
     public Text askText(){
         int verif = 1;
@@ -13,7 +13,7 @@ public class TextGui extends BasicConsole {
         Text newText = null;
         
         while (verif == 1) {
-            Point newPoint = new PointGui().askPointOrigem();
+            Point newPoint = new PointConsole().askPointOrigem();
 
             showMassage("Digite o texto que deseja renderizar:");
             String newString  = in.next();
@@ -32,7 +32,7 @@ public class TextGui extends BasicConsole {
     }
 
 
-    public EnumMenuOption askMenuText(MenuGui menuConsole){
+    public EnumMenuOption askMenuText(){
 
         showMassage("MENU *Texto*: \n" +
                 "Digite uma opção: \n" +
@@ -47,7 +47,7 @@ public class TextGui extends BasicConsole {
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWTEXT;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":
@@ -57,7 +57,7 @@ public class TextGui extends BasicConsole {
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return menuConsole.askMenuMakeFig();
+                return askMenuMakeFig();
             default:
                 return EnumMenuOption.END;
         }

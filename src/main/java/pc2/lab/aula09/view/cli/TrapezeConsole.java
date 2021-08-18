@@ -6,7 +6,7 @@ import pc2.lab.aula09.model.enums.EnumMenuOption;
 import pc2.lab.aula09.view.Iview.IMenuView;
 import pc2.lab.aula09.view.Iview.ITrapezeView;
 
-public class TrapezeConsole extends BasicConsole implements ITrapezeView {
+public class TrapezeConsole extends MenuConsole implements ITrapezeView {
 
     public Trapeze askTrapeze() {
 
@@ -41,7 +41,7 @@ public class TrapezeConsole extends BasicConsole implements ITrapezeView {
         return newTrapeze;
     }
 
-    public EnumMenuOption askMenuTrapeze(IMenuView menuScreen){
+    public EnumMenuOption askMenuTrapeze(){
 
         showMassage("MENU *Trapezio*: \n" +
                 "Digite uma opção: \n" +
@@ -56,7 +56,7 @@ public class TrapezeConsole extends BasicConsole implements ITrapezeView {
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWTRAPEZE;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":
@@ -66,7 +66,7 @@ public class TrapezeConsole extends BasicConsole implements ITrapezeView {
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return menuScreen.askMenuMakeFig();
+                return askMenuMakeFig();
             default:
                 return EnumMenuOption.END;
         }

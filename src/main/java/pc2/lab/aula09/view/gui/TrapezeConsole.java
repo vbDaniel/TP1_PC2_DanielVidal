@@ -3,16 +3,16 @@ package pc2.lab.aula09.view.gui;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Trapeze;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.cli.BasicConsole;
+import pc2.lab.aula09.view.Iview.ITrapezeView;
 
-public class TrapezeGui extends BasicConsole {
+public class TrapezeConsole extends MenuConsole implements ITrapezeView {
 
     public Trapeze askTrapeze() {
 
         int verif = 1;
         Trapeze newTrapeze = null;
         while (verif == 1) {
-            Point newPoint = new PointGui().askPointOrigem();
+            Point newPoint = new PointConsole().askPointOrigem();
 
             showMassage("Digite um inteiro para a ALTURA de seu trapézio: ");
             int hight = in.nextInt();
@@ -40,7 +40,7 @@ public class TrapezeGui extends BasicConsole {
         return newTrapeze;
     }
 
-    public EnumMenuOption askMenuTrapeze(MenuGui menuScreen){
+    public EnumMenuOption askMenuTrapeze(){
 
         showMassage("MENU *Trapezio*: \n" +
                 "Digite uma opção: \n" +
@@ -55,7 +55,7 @@ public class TrapezeGui extends BasicConsole {
 
         switch (option){
             case "1":
-                return EnumMenuOption.NEWTRAPEZE;
+                return EnumMenuOption.CREATE;
             case "2":
                 return EnumMenuOption.EDIT;
             case "3":
@@ -65,7 +65,7 @@ public class TrapezeGui extends BasicConsole {
             case "5":
                 return EnumMenuOption.DELETE;
             case "X":
-                return menuScreen.askMenuMakeFig();
+                return askMenuMakeFig();
             default:
                 return EnumMenuOption.END;
         }

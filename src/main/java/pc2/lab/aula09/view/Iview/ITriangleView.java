@@ -1,6 +1,8 @@
 package pc2.lab.aula09.view.Iview;
 
-import pc2.lab.aula09.controller.CefetPaintByVidal;
+import pc2.lab.aula09.Dao.RenderDao;
+import pc2.lab.aula09.controller.RenderControllers.TriangleController;
+import pc2.lab.aula09.controller.VidalPaintController;
 import pc2.lab.aula09.model.Triangle;
 import pc2.lab.aula09.model.TriangleEquilateral;
 import pc2.lab.aula09.model.TriangleIsosceles;
@@ -12,6 +14,6 @@ public interface ITriangleView {
     public TriangleIsosceles askTriangleIsoceles();
     public TriangleEquilateral askTriangleEquilateral();
     public EnumMenuOption askMenuTriangulo();
-    public EnumMenuOption askTrianguloEnum();
-    public Triangle askTriangle (CefetPaintByVidal paint);
+    public EnumMenuOption askTriangleEnum();
+    public Triangle askTriangle(RenderDao dao);
 }

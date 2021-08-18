@@ -6,5 +6,5 @@ import pc2.lab.aula09.view.cli.MenuConsole;
 
 public interface ITextView {
     public Text askText();
-    public EnumMenuOption askMenuText(IMenuView menuConsole);
+    public EnumMenuOption askMenuText();
 }

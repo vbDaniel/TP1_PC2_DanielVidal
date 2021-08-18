@@ -6,5 +6,5 @@ import pc2.lab.aula09.view.cli.MenuConsole;
 
 public interface ILozengeView {
     public Lozenge askLozenge();
-    public EnumMenuOption askMenuLozenge(IMenuView menuConsole);
+    public EnumMenuOption askMenuLozenge();
 }
