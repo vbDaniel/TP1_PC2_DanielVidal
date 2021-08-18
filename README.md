@@ -40,12 +40,24 @@ A declaração como Protected foi muito util ao usar uma variavel que iria receb
 
 1 - Você acredita que o correto uso da Orientação à objetos traz mais benefícios ao seu código fonte?
 
+  Acredito que visando o programador trás altos benefícios como a facil compreensão por conta da alta organização de de uma correta POO, oque possibilita o trabalho em um grupo de programadores. Além de existir uma reutilização de codigos no futuro. 
+
 2 - O que é o tratamento de exceções e porque ele é necessário para a organização da transmissão de mensagens entre classes?
+
+  O tratamento possibilita impedir que o fluxo do programa seja interrompido de forma que se retorne um erro que possa ocorrer sem que finalize o programa.  Pois usando o catch ou o throws posse se definir em qual classe o tratamento será realizado ou não.
 
 3 - Porque o uso de interfaces é útil no lugar do uso de Herança Multipla?
 
+   A ideia de inicial de OO seria aplicar a responsabilidade individual, e em herança multipla com uma classe que pode extender uma grande quantidade de classe pode acabar perdendo o foco inicial do OO. (Obs: visão de quem nunca usou Multiplas Heranças) .
+
 4 - Você tem alguma classe que usa extends e implements simultaneamente? se sim qual a justificativa para isso no modelo do seu trabalho?
+
+  Há diversas classes de view que usam ambas palavras, e a utilização é para que extendem uma classe mãe ( classe essa que tbm implementa uma outra que tbm é mãe ),  e ao implementar uma classe filha possibilita que ocorra uma troca de metodos entre todas as outras classes que podem ser implementadas.
 
 5 - O que é UML e dentre os possíveis diagramas existentes, cite 3 que poderiam ser úteis para descrever o seu projeto prático desta disciplina.
 
+  UML é uma linguagem de modelagem de softwares. O Diagrama comportamental de caso de uso para mostrar o casos gui e cli do programa, tambem o Diagrama de atividade pode mostrar o comportamento de uma atividade pra outra de meu programa, Diagramas estruturais principalmente o de objetos para mostrar parte do polimórfismo
+
 6 - Do seu protótipo até esta etapa você acabou fazendo uso de comportamentos Polimórficos no seu trabalho prático. Qual foi o benefício sobre a visão de "Legibilidade" do código fonte? E sobre "organização" das classes?
+
+  O grande volume de codigos, classes, interfaces e enuns mostra o quão necessário é a utilização de bons padrões de organização em OO. O uso de pacotes é extremamente importante para separa. Além da legibilidade no padrão do nome de tudo de metodos a pacotes facilita exponencialmente encontrar possiveis erros e criar o proprio comportamente polimórfico em si. 
