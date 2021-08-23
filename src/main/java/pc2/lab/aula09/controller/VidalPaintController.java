@@ -120,9 +120,6 @@ public class VidalPaintController {
 
                     break;
 
-                case LIST:
-                    dao.listRenders();
-                    break;
                 case DELETE:
                     dao.deleteRendersGeometrics();
                     break;
@@ -146,6 +143,10 @@ public class VidalPaintController {
                     }
 
                     break;
+
+                case LIST:
+                    dao.listRenders();
+                    break;
                 case END:
                     break;
                 default:
@@ -154,9 +155,5 @@ public class VidalPaintController {
 
         } while (opcao != EnumMenuOption.END);
     }
-
-
-
-
 }
 

@@ -4,7 +4,6 @@ import pc2.lab.aula09.model.Render;
 import pc2.lab.aula09.model.Triangle;
 import pc2.lab.aula09.view.Iview.*;
 import pc2.lab.aula09.view.cli.*;
-
 import java.io.*;
 
 public class RenderDao {
@@ -145,15 +144,16 @@ public class RenderDao {
 
     public void saveDoc(){
         try{
-            FileOutputStream fileDoc = new FileOutputStream("Render.dat");
+            FileOutputStream fileDoc = new FileOutputStream("RenderFile.dat");
             ObjectOutputStream object = new ObjectOutputStream(fileDoc);
-            object.writeObject(vectorRenders);
+            object.writeObject(vectorRenders); // AQUI CHAMA A EXCEPTION
+            //object.close();
         }
         catch(FileNotFoundException notFound){
             System.out.println("Arquivo não existe tente novamente ;)");
         }
-        catch(IOException io){
-            System.out.println("Há algo errado tente novamente ;)");
+        catch(IOException io) {
+            System.out.println("Há algo errado com I/O tente novamente ;)");
         }
         catch(Exception ex){
             System.out.println("Há algo errado tente novamente ;)");
@@ -165,7 +165,7 @@ public class RenderDao {
 
     public Render[] recoverDoc() throws FileNotFoundException, IOException, ClassNotFoundException{
         Render[] render;
-        FileInputStream doc = new FileInputStream("Render.dat");
+        FileInputStream doc = new FileInputStream("RenderFile.dat");
         ObjectInputStream object = new ObjectInputStream(doc);
         render = (Render[]) object.readObject();
 
