@@ -1,5 +1,7 @@
 package pc2.lab.aula09.model;
 
+import java.text.DecimalFormat;
+
 public class Text extends Render{
 
     private Point origem;
@@ -14,4 +16,14 @@ public class Text extends Render{
     public int hashCode() {
         return 8;
     }
+
+    @Override
+    public String toString() {
+        return "Text{\n" +
+                "=> " + text + "\n" +
+                "Posição => " + origem.toString() + "\n" +
+                "}\n" +
+                "---------------------------------------\n";
+    }
 }
+

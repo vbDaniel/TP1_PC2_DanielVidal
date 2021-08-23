@@ -16,8 +16,8 @@ public class TextConsole extends MenuConsole implements ITextView {
         while (verif == 1) {
             Point newPoint = new PointConsole().askPointOrigem();
 
-            showMassage("Digite o texto que deseja renderizar:");
-            String newString  = in.next();
+            showMassage("Digite o texto que deseja renderizar, enter para finalizar:\n");
+            String newString  = inEnter.next();
 
             showMassage("----------------------------------------------------------------\n");
             showMassage("Seu texto será:\n" +

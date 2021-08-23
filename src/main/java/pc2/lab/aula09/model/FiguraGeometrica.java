@@ -14,4 +14,8 @@ public class FiguraGeometrica extends Render{
     public int hashCode() {
         return 10;
     }
+    @Override
+    public String toString() {
+        return "Figura";
+    }
 }

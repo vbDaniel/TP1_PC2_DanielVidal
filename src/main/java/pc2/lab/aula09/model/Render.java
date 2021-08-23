@@ -1,7 +1,11 @@
 package pc2.lab.aula09.model;
 
-public abstract class Render {
+import java.io.Serializable;
+
+public abstract class Render implements Serializable{
 
     @Override
     public abstract int hashCode();
+    @Override
+    public abstract String toString();
 }

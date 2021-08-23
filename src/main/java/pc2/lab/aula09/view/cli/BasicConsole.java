@@ -3,6 +3,7 @@ package pc2.lab.aula09.view.cli;
 import pc2.lab.aula09.view.Iview.IBasicView;
 
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -19,9 +20,11 @@ public class BasicConsole implements IBasicView {
 
 
     protected Scanner in;
+    protected Scanner inEnter;
 
     public BasicConsole(){
         in = new Scanner(System.in);
+        inEnter = new Scanner(System.in).useDelimiter("\\n");
     }
 
     @Override

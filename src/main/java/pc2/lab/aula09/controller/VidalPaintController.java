@@ -130,7 +130,7 @@ public class VidalPaintController {
                     break;
                 case RECOVER:
                     try{
-                        Render [] vectorAux = dao.recoverDoc();
+                        dao.recoverDoc();
                     }
                     catch(FileNotFoundException noFile){
                         basicScreen.showMassage("Arquivo não existe tente novamente ;)");

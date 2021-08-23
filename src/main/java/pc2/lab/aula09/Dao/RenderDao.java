@@ -20,8 +20,8 @@ public class RenderDao {
     private final IRightView rightScreen;
     private final ITextView textConsole;
 
-    public RenderDao(int lenght){
-        vectorRenders = new Render[lenght];
+    public RenderDao(int tamanho){
+        vectorRenders = new Render[tamanho];
         basicScreen = new BasicConsole();
         squareScreen = new SquareConsole();
         rectangleScreen = new RectangleConsole();
@@ -163,12 +163,11 @@ public class RenderDao {
     }
 
 
-    public Render[] recoverDoc() throws FileNotFoundException, IOException, ClassNotFoundException{
-        Render[] render;
+    public void recoverDoc() throws FileNotFoundException, IOException, ClassNotFoundException{
+
         FileInputStream doc = new FileInputStream("RenderFile.dat");
         ObjectInputStream object = new ObjectInputStream(doc);
-        render = (Render[]) object.readObject();
+        vectorRenders = (Render[]) object.readObject();
 
-        return render;
     }
 }
