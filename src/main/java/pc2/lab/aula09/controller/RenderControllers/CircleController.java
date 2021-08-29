@@ -1,17 +1,17 @@
 package pc2.lab.aula09.controller.RenderControllers;
 
 import pc2.lab.aula09.Dao.RenderDao;
-import pc2.lab.aula09.controller.IControllers.ICircleController;
+import pc2.lab.aula09.controller.ICRUDController;
 import pc2.lab.aula09.model.Circle;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.ICircleView;
+import pc2.lab.aula09.view.Iview.ICRUDRendersView;
 import pc2.lab.aula09.view.cli.CircleConsole;
 
-public class CircleController implements ICircleController {
+public class CircleController implements ICRUDController {
 
     private EnumMenuOption opcao;
     private RenderDao dao;
-    private ICircleView circleScreen;
+    private ICRUDRendersView circleScreen;
 
     public  CircleController(RenderDao dao){
         this.dao = dao;
@@ -20,7 +20,7 @@ public class CircleController implements ICircleController {
     @Override
     public EnumMenuOption start() {
 
-        opcao = circleScreen.askMenuCircle();
+        opcao = circleScreen.askMenu();
         switch (opcao) {
             case CREATE:
                 create();
@@ -45,7 +45,7 @@ public class CircleController implements ICircleController {
 
     @Override
     public void create() {
-        Circle newCircle = circleScreen.askCircle();
+        Circle newCircle = (Circle) circleScreen.askRender();
         dao.insertRender(newCircle);
     }
 }

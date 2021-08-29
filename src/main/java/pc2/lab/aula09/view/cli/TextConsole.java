@@ -3,12 +3,10 @@ package pc2.lab.aula09.view.cli;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Text;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.IMenuView;
-import pc2.lab.aula09.view.Iview.ITextView;
 
-public class TextConsole extends MenuConsole implements ITextView {
+public class TextConsole extends AbstractCRUD<Text> {
 
-    public Text askText(){
+    public Text askRender(){
         int verif = 1;
 
         Text newText = null;
@@ -33,7 +31,7 @@ public class TextConsole extends MenuConsole implements ITextView {
     }
 
 
-    public EnumMenuOption askMenuText(){
+    public EnumMenuOption askMenu(){
 
         showMassage("MENU *Texto*: \n" +
                 "Digite uma opção: \n" +

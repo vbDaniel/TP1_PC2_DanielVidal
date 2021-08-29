@@ -3,8 +3,6 @@ package pc2.lab.aula09.view.cli;
 import pc2.lab.aula09.model.Circle;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.ICircleView;
-import pc2.lab.aula09.view.Iview.IMenuView;
 
 /**
  * A classe que cria os objetos Circulos a partir dos dados dos usuarios;
@@ -13,8 +11,10 @@ import pc2.lab.aula09.view.Iview.IMenuView;
  * @version CefetPaint 1.0
  *
  */
-public class CircleConsole extends MenuConsole implements ICircleView {
-    public Circle askCircle(){
+public class CircleConsole extends AbstractCRUD<Circle>  {
+
+    @Override
+    public Circle askRender(){
         int verif = 1;
         Circle newCircle = null;
         while (verif == 1) {
@@ -41,7 +41,8 @@ public class CircleConsole extends MenuConsole implements ICircleView {
         return newCircle;
     }
 
-    public EnumMenuOption askMenuCircle(){
+    @Override
+    public EnumMenuOption askMenu(){
 
         showMassage("MENU *Circulo*: \n" +
                         "Digite uma opção: \n" +

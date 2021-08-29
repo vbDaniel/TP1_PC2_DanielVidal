@@ -1,17 +1,16 @@
 package pc2.lab.aula09.controller.RenderControllers;
 
 import pc2.lab.aula09.Dao.RenderDao;
-import pc2.lab.aula09.controller.IControllers.ISquareController;
-import pc2.lab.aula09.controller.VidalPaintController;
+import pc2.lab.aula09.controller.ICRUDController;
 import pc2.lab.aula09.model.Square;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.ISquareView;
+import pc2.lab.aula09.view.Iview.ICRUDRendersView;
 import pc2.lab.aula09.view.cli.SquareConsole;
 
 
-public class SquareController  implements ISquareController {
+public class SquareController  implements ICRUDController {
 
-    private ISquareView squareScreen;
+    private ICRUDRendersView <Square> squareScreen;
     private EnumMenuOption opcao;
     private RenderDao dao;
 
@@ -22,10 +21,10 @@ public class SquareController  implements ISquareController {
     @Override
     public EnumMenuOption start() {
 
-        opcao = squareScreen.askMenuSquare();
+        opcao = squareScreen.askMenu();
         switch (opcao) {
             case CREATE:
-                dao.insertRender(create());
+                create();
                 break;
             case EDIT:
                dao.editOnlyRender(1);
@@ -47,8 +46,8 @@ public class SquareController  implements ISquareController {
     }
 
     @Override
-    public Square create() {
-        Square squareNew = squareScreen.askSquare();
-        return squareNew;
+    public void create() {
+        Square squareNew =  squareScreen.askRender();
+        dao.insertRender(squareNew);
     }
 }

@@ -3,11 +3,11 @@ package pc2.lab.aula09.view.gui;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Rectangle;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.IRectangleView;
+import pc2.lab.aula09.view.cli.AbstractCRUD;
 
-public class RectangleConsole extends MenuConsole implements IRectangleView {
+public class RectangleConsole extends AbstractCRUD<Rectangle> {
 
-    public Rectangle askRectangle(){
+    public Rectangle askRender(){
 
         int verif = 1;
         Rectangle newRectangle = null;
@@ -35,7 +35,7 @@ public class RectangleConsole extends MenuConsole implements IRectangleView {
         return newRectangle;
     }
 
-    public EnumMenuOption askMenuRectangle(){
+    public EnumMenuOption askMenu(){
 
         showMassage("MENU *Rectangle*: \n" +
                 "Digite uma opção: \n" +

@@ -1,7 +1,6 @@
 package pc2.lab.aula09.Dao;
 
 import pc2.lab.aula09.model.Render;
-import pc2.lab.aula09.model.Triangle;
 import pc2.lab.aula09.view.Iview.*;
 import pc2.lab.aula09.view.cli.*;
 import java.io.*;
@@ -10,15 +9,10 @@ public class RenderDao {
 
     private Render[] vectorRenders;
     private final IBasicView basicScreen;
-    private final ISquareView squareScreen;
-    private final IRectangleView rectangleScreen;
-    private final ILozengeView lozengeScreen;
-    private final ITrapezeView trapezeScreen;
-    private final ITriangleView triangleScreen;
-    private final ICircleView circleScreen;
     private final IMenuView menuScreen;
-    private final IRightView rightScreen;
-    private final ITextView textConsole;
+    private final ICRUDRendersView squareScreen, rectangleScreen, lozengeScreen, trapezeScreen,
+            circleScreen, rightScreen, textConsole, triangleScreen;
+
 
     public RenderDao(int tamanho){
         vectorRenders = new Render[tamanho];
@@ -79,28 +73,28 @@ public class RenderDao {
         int id = basicScreen.askInt("\nEscolha apartir da ID da qual voce deseja EDITAR:");
         switch (hash){
             case 1:
-                vectorRenders[id-1] = squareScreen.askSquare();
+                vectorRenders[id-1] = (Render) squareScreen.askRender();
                 break;
             case 2:
-                vectorRenders[id-1] = rectangleScreen.askRectangle();
+                vectorRenders[id-1] = (Render) rectangleScreen.askRender();
                 break;
             case 3:
-                vectorRenders[id-1] = lozengeScreen.askLozenge();
+                vectorRenders[id-1] = (Render) lozengeScreen.askRender();
                 break;
             case 4:
-                vectorRenders[id-1] = trapezeScreen.askTrapeze();
+                vectorRenders[id-1] = (Render) trapezeScreen.askRender();
                 break;
             case 5:
-                vectorRenders[id-1] = circleScreen.askCircle();
+                vectorRenders[id-1] = (Render) circleScreen.askRender();
                 break;
             case 6:
-                vectorRenders[id-1] = triangleScreen.askTriangle(this);
+                vectorRenders[id-1] = (Render) triangleScreen.askRender();
                 break;
             case 7:
-                vectorRenders[id-1] = rightScreen.askRight();
+                vectorRenders[id-1] = (Render) rightScreen.askRender();
                 break;
             case 8:
-                vectorRenders[id-1] = textConsole.askText();
+                vectorRenders[id-1] = (Render) textConsole.askRender();
                 break;
 
         }

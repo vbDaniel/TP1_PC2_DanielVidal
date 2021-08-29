@@ -3,11 +3,11 @@ package pc2.lab.aula09.view.gui;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Text;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.ITextView;
+import pc2.lab.aula09.view.cli.AbstractCRUD;
 
-public class TextConsole extends MenuConsole implements ITextView {
+public class TextConsole extends AbstractCRUD<Text> {
 
-    public Text askText(){
+    public Text askRender(){
         int verif = 1;
 
         Text newText = null;
@@ -15,8 +15,8 @@ public class TextConsole extends MenuConsole implements ITextView {
         while (verif == 1) {
             Point newPoint = new PointConsole().askPointOrigem();
 
-            showMassage("Digite o texto que deseja renderizar:");
-            String newString  = in.next();
+            showMassage("Digite o texto que deseja renderizar, enter para finalizar:\n");
+            String newString  = inEnter.next();
 
             showMassage("----------------------------------------------------------------\n");
             showMassage("Seu texto será:\n" +
@@ -32,7 +32,7 @@ public class TextConsole extends MenuConsole implements ITextView {
     }
 
 
-    public EnumMenuOption askMenuText(){
+    public EnumMenuOption askMenu(){
 
         showMassage("MENU *Texto*: \n" +
                 "Digite uma opção: \n" +

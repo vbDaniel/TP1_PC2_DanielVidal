@@ -1,17 +1,17 @@
 package pc2.lab.aula09.controller.RenderControllers;
 
 import pc2.lab.aula09.Dao.RenderDao;
-import pc2.lab.aula09.controller.IControllers.IRightController;
+import pc2.lab.aula09.controller.ICRUDController;
 import pc2.lab.aula09.model.Right;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.IRightView;
+import pc2.lab.aula09.view.Iview.ICRUDRendersView;
 import pc2.lab.aula09.view.cli.RightConsole;
 
-public class RightController implements IRightController {
+public class RightController implements ICRUDController {
 
     private EnumMenuOption opcao;
     private RenderDao dao;
-    private IRightView rightScreen;
+    private ICRUDRendersView rightScreen;
 
     public RightController(RenderDao dao){
         this.dao = dao;
@@ -20,7 +20,7 @@ public class RightController implements IRightController {
     @Override
     public EnumMenuOption start() {
 
-        opcao = rightScreen.askMenuRight();
+        opcao = rightScreen.askMenu();
         switch (opcao) {
             case CREATE:
                 create();
@@ -46,7 +46,7 @@ public class RightController implements IRightController {
 
     @Override
     public void create() {
-        Right newRight = rightScreen.askRight();
+        Right newRight = (Right) rightScreen.askRender();
         dao.insertRender(newRight);
     }
 }

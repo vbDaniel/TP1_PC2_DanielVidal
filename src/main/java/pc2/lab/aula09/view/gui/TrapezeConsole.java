@@ -3,11 +3,11 @@ package pc2.lab.aula09.view.gui;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Trapeze;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.ITrapezeView;
+import pc2.lab.aula09.view.cli.AbstractCRUD;
 
-public class TrapezeConsole extends MenuConsole implements ITrapezeView {
+public class TrapezeConsole extends AbstractCRUD<Trapeze> {
 
-    public Trapeze askTrapeze() {
+    public Trapeze askRender() {
 
         int verif = 1;
         Trapeze newTrapeze = null;
@@ -40,7 +40,7 @@ public class TrapezeConsole extends MenuConsole implements ITrapezeView {
         return newTrapeze;
     }
 
-    public EnumMenuOption askMenuTrapeze(){
+    public EnumMenuOption askMenu(){
 
         showMassage("MENU *Trapezio*: \n" +
                 "Digite uma opção: \n" +

@@ -1,16 +1,15 @@
 package pc2.lab.aula09.controller.RenderControllers;
 
 import pc2.lab.aula09.Dao.RenderDao;
-import pc2.lab.aula09.controller.IControllers.ITriangleController;
-import pc2.lab.aula09.model.Trapeze;
+import pc2.lab.aula09.controller.ICRUDController;
 import pc2.lab.aula09.model.Triangle;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.ITriangleView;
+import pc2.lab.aula09.view.Iview.ICRUDRendersView;
 import pc2.lab.aula09.view.cli.TriangleConsole;
 
-public class TriangleController implements ITriangleController {
+public class TriangleController implements ICRUDController {
 
-    private ITriangleView triangleScreen;
+    private ICRUDRendersView<Triangle> triangleScreen;
     private EnumMenuOption opcao;
     private RenderDao dao;
 
@@ -22,7 +21,7 @@ public class TriangleController implements ITriangleController {
 
     @Override
     public EnumMenuOption start() {
-        opcao = triangleScreen.askMenuTriangulo();
+        opcao = triangleScreen.askMenu();
         switch (opcao) {
             case CREATE:
                 create();
@@ -48,7 +47,7 @@ public class TriangleController implements ITriangleController {
 
     @Override
     public void create() {
-        Triangle newTriangle = triangleScreen.askTriangle(dao);
+        Triangle newTriangle = triangleScreen.askRender();
         dao.insertRender(newTriangle);
     }
 }

@@ -1,16 +1,15 @@
 package pc2.lab.aula09.controller.RenderControllers;
 
 import pc2.lab.aula09.Dao.RenderDao;
-import pc2.lab.aula09.controller.IControllers.ILozangerController;
+import pc2.lab.aula09.controller.ICRUDController;
 import pc2.lab.aula09.model.Lozenge;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.ILozengeView;
-import pc2.lab.aula09.view.Iview.IRectangleView;
+import pc2.lab.aula09.view.Iview.ICRUDRendersView;
 import pc2.lab.aula09.view.cli.LozengeConsole;
 
-public class LozengeController implements ILozangerController {
+public class LozengeController implements ICRUDController {
 
-    private ILozengeView lozengeScreen;
+    private ICRUDRendersView lozengeScreen;
     private EnumMenuOption opcao;
     private RenderDao dao;
 
@@ -22,7 +21,7 @@ public class LozengeController implements ILozangerController {
     @Override
     public EnumMenuOption start() {
 
-        opcao = lozengeScreen.askMenuLozenge();
+        opcao = lozengeScreen.askMenu();
         switch (opcao) {
             case CREATE:
                 create();
@@ -48,7 +47,7 @@ public class LozengeController implements ILozangerController {
 
     @Override
     public void create() {
-        Lozenge newLozenge = lozengeScreen.askLozenge();
+        Lozenge newLozenge = (Lozenge) lozengeScreen.askRender();
         dao.insertRender(newLozenge);
     }
 }

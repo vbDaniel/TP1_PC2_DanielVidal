@@ -18,9 +18,11 @@ public class BasicConsole implements IBasicView {
 
 
     protected Scanner in;
+    protected Scanner inEnter;
 
     public BasicConsole(){
         in = new Scanner(System.in);
+        inEnter = new Scanner(System.in).useDelimiter("\\n");
     }
 
     @Override

@@ -1,17 +1,17 @@
 package pc2.lab.aula09.controller.RenderControllers;
 
 import pc2.lab.aula09.Dao.RenderDao;
-import pc2.lab.aula09.controller.IControllers.ITrapezeController;
+import pc2.lab.aula09.controller.ICRUDController;
 import pc2.lab.aula09.model.Trapeze;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.ITrapezeView;
+import pc2.lab.aula09.view.Iview.ICRUDRendersView;
 import pc2.lab.aula09.view.cli.TrapezeConsole;
 
-public class TrapezeController implements ITrapezeController {
+public class TrapezeController implements ICRUDController {
 
     private RenderDao dao;
     private EnumMenuOption opcao;
-    private ITrapezeView trapezeScreen;
+    private ICRUDRendersView<Trapeze> trapezeScreen;
 
 
     public TrapezeController(RenderDao dao){
@@ -22,7 +22,7 @@ public class TrapezeController implements ITrapezeController {
     @Override
     public EnumMenuOption start() {
 
-        opcao = trapezeScreen.askMenuTrapeze();
+        opcao = trapezeScreen.askMenu();
         switch (opcao) {
             case CREATE:
                 create();
@@ -48,7 +48,7 @@ public class TrapezeController implements ITrapezeController {
 
     @Override
     public void create() {
-        Trapeze newTrapeze = trapezeScreen.askTrapeze();
+        Trapeze newTrapeze = trapezeScreen.askRender();
         dao.insertRender(newTrapeze);
     }
 }

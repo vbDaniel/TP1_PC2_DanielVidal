@@ -3,13 +3,11 @@ package pc2.lab.aula09.view.cli;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Right;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.IMenuView;
-import pc2.lab.aula09.view.Iview.IRightView;
 
 
-public class RightConsole extends MenuConsole implements IRightView {
+public class RightConsole extends AbstractCRUD<Right> {
 
-    public Right askRight(){
+    public Right askRender(){
         int verif = 1;
         Right newRight = null;
         while (verif == 1) {
@@ -33,7 +31,7 @@ public class RightConsole extends MenuConsole implements IRightView {
         return newRight;
     }
 
-    public EnumMenuOption askMenuRight(){
+    public EnumMenuOption askMenu(){
 
         showMassage("MENU *Reta*: \n" +
                 "Digite uma opção: \n" +

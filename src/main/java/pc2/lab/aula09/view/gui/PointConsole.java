@@ -2,6 +2,7 @@ package pc2.lab.aula09.view.gui;
 
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
+import pc2.lab.aula09.view.cli.MenuConsole;
 
 public class PointConsole extends BasicConsole {
     public Point askPoint(){

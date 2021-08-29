@@ -3,11 +3,12 @@ package pc2.lab.aula09.view.gui;
 import pc2.lab.aula09.model.Lozenge;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.ILozengeView;
+import pc2.lab.aula09.view.cli.AbstractCRUD;
 
-public class LozengeConsole extends MenuConsole implements ILozengeView {
+public class LozengeConsole extends AbstractCRUD<Lozenge> {
 
-    public Lozenge askLozenge(){
+    @Override
+    public Lozenge askRender(){
 
         int verif = 1;
         Lozenge newLozenge = null;
@@ -35,7 +36,8 @@ public class LozengeConsole extends MenuConsole implements ILozengeView {
 
         return newLozenge;
     }
-    public EnumMenuOption askMenuLozenge(){
+    @Override
+    public EnumMenuOption askMenu(){
 
         showMassage("MENU *Losango*: \n" +
                 "Digite uma opção: \n" +

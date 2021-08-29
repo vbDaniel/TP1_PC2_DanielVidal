@@ -1,16 +1,15 @@
 package pc2.lab.aula09.controller.RenderControllers;
 
 import pc2.lab.aula09.Dao.RenderDao;
-import pc2.lab.aula09.controller.IControllers.IRectangleController;
+import pc2.lab.aula09.controller.ICRUDController;
 import pc2.lab.aula09.model.Rectangle;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.IRectangleView;
-import pc2.lab.aula09.view.Iview.ISquareView;
+import pc2.lab.aula09.view.Iview.ICRUDRendersView;
 import pc2.lab.aula09.view.cli.RectangleConsole;
 
-public class RectangleController implements IRectangleController {
+public class RectangleController implements ICRUDController {
 
-    private IRectangleView rectangleScreen;
+    private ICRUDRendersView rectangleScreen;
     private EnumMenuOption opcao;
     private RenderDao dao;
 
@@ -22,7 +21,7 @@ public class RectangleController implements IRectangleController {
     @Override
     public EnumMenuOption start() {
         
-        EnumMenuOption option = rectangleScreen.askMenuRectangle();
+        EnumMenuOption option = rectangleScreen.askMenu();
         switch (option) {
             case CREATE:
                 create();
@@ -48,7 +47,7 @@ public class RectangleController implements IRectangleController {
 
     @Override
     public void create() {
-        Rectangle newRectangle = rectangleScreen.askRectangle();
+        Rectangle newRectangle = (Rectangle) rectangleScreen.askRender();
         dao.insertRender(newRectangle);
     }
 }

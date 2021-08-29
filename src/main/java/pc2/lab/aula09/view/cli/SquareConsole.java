@@ -3,12 +3,10 @@ package pc2.lab.aula09.view.cli;
 import pc2.lab.aula09.model.Point;
 import pc2.lab.aula09.model.Square;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.IMenuView;
-import pc2.lab.aula09.view.Iview.ISquareView;
 
-public class SquareConsole extends MenuConsole implements ISquareView {
+public class SquareConsole extends AbstractCRUD<Square> {
 
-    public Square askSquare(){
+    public Square askRender(){
         int verif = 1;
         Square newSquare = null;
         while (verif == 1) {
@@ -35,7 +33,7 @@ public class SquareConsole extends MenuConsole implements ISquareView {
     }
 
 
-    public EnumMenuOption askMenuSquare(){
+    public EnumMenuOption askMenu(){
 
         showMassage("MENU *Quadrado*: \n" +
                 "Digite uma opção: \n" +

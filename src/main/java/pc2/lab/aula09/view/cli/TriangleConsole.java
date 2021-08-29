@@ -1,13 +1,10 @@
 package pc2.lab.aula09.view.cli;
 
-import pc2.lab.aula09.Dao.RenderDao;
-import pc2.lab.aula09.controller.VidalPaintController;
 import pc2.lab.aula09.model.*;
 import pc2.lab.aula09.model.enums.EnumMenuOption;
-import pc2.lab.aula09.view.Iview.ITriangleView;
 
 
-public class TriangleConsole extends MenuConsole implements ITriangleView {
+public class TriangleConsole extends AbstractCRUD<Triangle> {
 
     MenuConsole menuConsole = new MenuConsole();
 
@@ -93,7 +90,9 @@ public class TriangleConsole extends MenuConsole implements ITriangleView {
         return newTriangleEquilateral;
     }
 
-    public EnumMenuOption askMenuTriangulo(){
+
+    @Override
+    public EnumMenuOption askMenu(){
 
         showMassage("MENU *Triangulo*: \n" +
                 "Digite uma opção: \n" +
@@ -102,7 +101,9 @@ public class TriangleConsole extends MenuConsole implements ITriangleView {
                 "3 - Listar Triangulo(Listar Itens do Tipo) \n" +
                 "4 - Mostrar o Triangulo(Listar detalhes de 1 Itens) \n" +
                 "5 - Excluir (Excluir Id)\n" +
-                "X - Voltar\n");
+                "X - Voltar\n" +
+                "------------------------------------------------------\n" +
+                "=>");
 
         String option = in.next();
 
@@ -131,7 +132,9 @@ public class TriangleConsole extends MenuConsole implements ITriangleView {
                 "1 - Novo Triangulo Equilatero\n" +
                 "2 - Novo Triangulo Isosceles\n" +
                 "3 - Novo Triangulo Right\n" +
-                "x - Voltar ao menu");
+                "x - Voltar ao menu\n" +
+                "------------------------------------------------------\n" +
+                "=>");
 
         String option = in.next();
 
@@ -143,7 +146,7 @@ public class TriangleConsole extends MenuConsole implements ITriangleView {
             case "3":
                 return EnumMenuOption.TRIANGLERIGHT;
             case "X":
-                return askMenuTriangulo();
+                return askMenu();
             default:
                 return EnumMenuOption.END;
         }
@@ -151,23 +154,17 @@ public class TriangleConsole extends MenuConsole implements ITriangleView {
     }
 
     @Override
-    public Triangle askTriangle(RenderDao dao) {
+    public Triangle askRender() {
 
         EnumMenuOption opcao = askTriangleEnum();
 
         switch (opcao) {
             case TRIANGLEEQUILATERAL:
-                Triangle newTriagleEqui = askTriangleEquilateral();
-                dao.insertRender(newTriagleEqui);
-                return newTriagleEqui;
+                return askTriangleEquilateral();
             case TRIANGLEISOSCELES:
-                Triangle newTriangleIso = askTriangleIsoceles();
-                dao.insertRender(newTriangleIso);
-                return newTriangleIso;
+                return askTriangleIsoceles();
             case TRIANGLERIGHT:
-                Triangle newTriangleRight = askTriangleRight();
-                dao.insertRender(newTriangleRight);
-                return newTriangleRight;
+                return askTriangleRight();
             default:
                 break;
 

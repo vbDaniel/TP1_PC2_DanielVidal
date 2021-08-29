@@ -1,10 +1,9 @@
-package pc2.lab.aula09.controller.IControllers;
+package pc2.lab.aula09.controller;
 
 import pc2.lab.aula09.model.enums.EnumMenuOption;
 
-public interface ITextController {
+public interface ICRUDController {
 
     public EnumMenuOption start();
     public void create();
-
 }
